@@ -1,3 +1,32 @@
-# Hotel
+# Proyecto de Software 2
 
-a [Sails](http://sailsjs.org) application
+# Integrantes:
+
+- `Homero Arias`
+- `Juan Erazo`
+- `Alexandra Granda`
+- `Daniela Ramos`
+
+# Deploy con HEROKU
+
+Push en Heroku:
+
+```
+git push heroku master
+```
+
+Deploy en Heroku
+```
+heroku ps:scale web=1
+```
+
+Visualizar
+```
+heroku open
+```
+
+Acceder a la base de datos
+```
+heroku pg:psql postgresql-rectangular-92584 --app hotel-sw2
+```
+
