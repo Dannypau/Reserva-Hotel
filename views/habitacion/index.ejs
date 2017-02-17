@@ -11,9 +11,11 @@
     <th>#</th>
 		<th>id</th>
 			<th>id_habitacion</th>
-			<th>id_extra_habitacion</th>
-			<th>id_tipo_habitacion</th>
+			<th>disponibilidad</th>
 			<th>numero_piso</th>
+			<th>jacuzzi</th>
+			<th>vista_mar</th>
+			<th>precio</th>
 
 		<th>created at</th>
 		<th>updated at</th>
@@ -33,13 +35,19 @@
 						<%= item.id_habitacion %>
 					</td>
 					<td>
-						<%= item.id_extra_habitacion %>
-					</td>
-					<td>
-						<%= item.id_tipo_habitacion %>
+						<%= item.disponibilidad %>
 					</td>
 					<td>
 						<%= item.numero_piso %>
+					</td>
+					<td>
+						<%= item.jacuzzi %>
+					</td>
+					<td>
+						<%= item.vista_mar %>
+					</td>
+					<td>
+						<%= item.precio %>
 					</td>
 				<td>
 					<%= item.createdAt %>

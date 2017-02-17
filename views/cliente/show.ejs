@@ -1,0 +1,27 @@
+<h1>Show cliente</h1>
+
+	<p>
+		<strong>id_cliente:</strong>
+		<%= element.id_cliente %>
+	</p>
+	<p>
+		<strong>nombre_cliente:</strong>
+		<%= element.nombre_cliente %>
+	</p>
+	<p>
+		<strong>correo:</strong>
+		<%= element.correo %>
+	</p>
+	<p>
+		<strong>direccion:</strong>
+		<%= element.direccion %>
+	</p>
+	<p>
+		<strong>telefono:</strong>
+		<%= element.telefono %>
+	</p>
+
+<br>
+<a href="/cliente/edit/<%= element.id %>">Edit</a>
+<a href="/cliente/create">New</a>
+<a href="/cliente">Back</a>

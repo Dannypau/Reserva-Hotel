@@ -1,18 +1,17 @@
-<h1>servicio</h1>
+<h1>reservaHabitacion</h1>
 
 
 <% if (result.length == 0) { %>
   <h4>
-    0 servicio
+    0 reservaHabitacion
   </h4>
 <% } else { %>
 <table>
 	<thead>
     <th>#</th>
 		<th>id</th>
-			<th>id_servicio</th>
-			<th>desayuno</th>
-			<th>parqueadero</th>
+			<th>id_reserva</th>
+			<th>id_habitacion</th>
 
 		<th>created at</th>
 		<th>updated at</th>
@@ -29,13 +28,10 @@
 					<%= item.id %>
 				</td>
 					<td>
-						<%= item.id_servicio %>
+						<%= item.id_reserva %>
 					</td>
 					<td>
-						<%= item.desayuno %>
-					</td>
-					<td>
-						<%= item.parqueadero %>
+						<%= item.id_habitacion %>
 					</td>
 				<td>
 					<%= item.createdAt %>
@@ -44,13 +40,13 @@
 					<%= item.updatedAt %>
 				</td>
 				<td>
-					<a href="/servicio/show/<%= item.id %>">Show</a>
+					<a href="/reservaHabitacion/show/<%= item.id %>">Show</a>
 				</td>
 				<td>
-					<a href="/servicio/delete/<%= item.id %>">Delete</a>
+					<a href="/reservaHabitacion/delete/<%= item.id %>">Delete</a>
 				</td>
         <td>
-					<a href="/servicio/edit/<%= item.id %>">Edit</a>
+					<a href="/reservaHabitacion/edit/<%= item.id %>">Edit</a>
 				</td>
 			</tr>
 			<% }) %>
@@ -60,4 +56,4 @@
 <% } %>
 
 <br>
-<a href="/servicio/create">New</a>
+<a href="/reservaHabitacion/create">New</a>

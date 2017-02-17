@@ -1,12 +1,12 @@
 /**
- * Servicio
+ * Cliente
  *
- * @description :: Server-side logic for managing Servicio
+ * @description :: Server-side logic for managing Cliente
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
     index: function(req, res, next) {
-        Servicio.find().exec(function(err, list) {
+        Cliente.find().exec(function(err, list) {
             if (err) return Error('Error');
             return res.view({
                 result: list
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     show: function(req, res, next) {
-        Servicio.findOneById(req.param('id'), function Founded(err, value) {
+        Cliente.findOneById(req.param('id'), function Founded(err, value) {
             if (err) {
                 return next(err);
             }
@@ -26,7 +26,7 @@ module.exports = {
     },
 
     edit: function(req, res, next) {
-        Servicio.findOne(req.param('id'), function Founded(err, value) {
+        Cliente.findOne(req.param('id'), function Founded(err, value) {
             if (err) {
                 return next(err);
             }
@@ -37,20 +37,20 @@ module.exports = {
     },
 
     update: function(req, res, next) {
-        Servicio.update(req.param('id'), req.body, function Update(err, value) {
+        Cliente.update(req.param('id'), req.body, function Update(err, value) {
             if (err) {
                 return next(err);
             }
-            return res.redirect('servicio/show/' + req.param('id'));
+            return res.redirect('cliente/show/' + req.param('id'));
         });
     },
 
     delete: function(req, res, next) {
-        Servicio.destroy(req.param('id'), function Update(err, value) {
+        Cliente.destroy(req.param('id'), function Update(err, value) {
             if (err) {
                 return next(err);
             }
-            return res.redirect('/servicio');
+            return res.redirect('/cliente');
         });
     },
 

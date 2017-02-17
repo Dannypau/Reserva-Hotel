@@ -1,17 +1,20 @@
-<h1>menu</h1>
+<h1>cliente</h1>
 
 
 <% if (result.length == 0) { %>
   <h4>
-    0 menu
+    0 cliente
   </h4>
 <% } else { %>
 <table>
 	<thead>
     <th>#</th>
 		<th>id</th>
-			<th>id_menu</th>
-			<th>desc_menu</th>
+			<th>id_cliente</th>
+			<th>nombre_cliente</th>
+			<th>correo</th>
+			<th>direccion</th>
+			<th>telefono</th>
 
 		<th>created at</th>
 		<th>updated at</th>
@@ -28,10 +31,19 @@
 					<%= item.id %>
 				</td>
 					<td>
-						<%= item.id_menu %>
+						<%= item.id_cliente %>
 					</td>
 					<td>
-						<%= item.desc_menu %>
+						<%= item.nombre_cliente %>
+					</td>
+					<td>
+						<%= item.correo %>
+					</td>
+					<td>
+						<%= item.direccion %>
+					</td>
+					<td>
+						<%= item.telefono %>
 					</td>
 				<td>
 					<%= item.createdAt %>
@@ -40,13 +52,13 @@
 					<%= item.updatedAt %>
 				</td>
 				<td>
-					<a href="/menu/show/<%= item.id %>">Show</a>
+					<a href="/cliente/show/<%= item.id %>">Show</a>
 				</td>
 				<td>
-					<a href="/menu/delete/<%= item.id %>">Delete</a>
+					<a href="/cliente/delete/<%= item.id %>">Delete</a>
 				</td>
         <td>
-					<a href="/menu/edit/<%= item.id %>">Edit</a>
+					<a href="/cliente/edit/<%= item.id %>">Edit</a>
 				</td>
 			</tr>
 			<% }) %>
@@ -56,4 +68,4 @@
 <% } %>
 
 <br>
-<a href="/menu/create">New</a>
+<a href="/cliente/create">New</a>

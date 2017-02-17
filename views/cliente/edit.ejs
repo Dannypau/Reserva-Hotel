@@ -1,20 +1,16 @@
 <div class="">
-  <h1>New usuario</h1>
+  <h1>New cliente</h1>
 
   <div class="body">
-    <form class="" action="/usuario/update" method="post">
+    <form class="" action="/cliente/update" method="post">
       <input name="id" value="<%= element.id %>" hidden="true" required>
         <div class="">
-          <label for="">id_usuario</label>
-          <input type="number" name="id_usuario" value="<%= element.id_usuario %>" required="false">
+          <label for="">id_cliente</label>
+          <input type="text" name="id_cliente" value="<%= element.id_cliente %>" required="false">
         </div>
         <div class="">
-          <label for="">id_perfil</label>
-          <input type="number" name="id_perfil" value="<%= element.id_perfil %>" required="false">
-        </div>
-        <div class="">
-          <label for="">nombre_usuario</label>
-          <input type="text" name="nombre_usuario" value="<%= element.nombre_usuario %>" required="false">
+          <label for="">nombre_cliente</label>
+          <input type="text" name="nombre_cliente" value="<%= element.nombre_cliente %>" required="false">
         </div>
         <div class="">
           <label for="">correo</label>
@@ -28,9 +24,9 @@
           <label for="">telefono</label>
           <input type="text" name="telefono" value="<%= element.telefono %>" required="true">
         </div>
-      <button type="submit">Update usuario</button>
+      <button type="submit">Update cliente</button>
     </form>
     <br />
-    <a href="/usuario">Index</a>
+    <a href="/cliente">Index</a>
   </div>
 </div>

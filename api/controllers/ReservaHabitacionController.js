@@ -1,12 +1,12 @@
 /**
- * Menu
+ * ReservaHabitacion
  *
- * @description :: Server-side logic for managing Menu
+ * @description :: Server-side logic for managing ReservaHabitacion
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
     index: function(req, res, next) {
-        Menu.find().exec(function(err, list) {
+        ReservaHabitacion.find().exec(function(err, list) {
             if (err) return Error('Error');
             return res.view({
                 result: list
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     show: function(req, res, next) {
-        Menu.findOneById(req.param('id'), function Founded(err, value) {
+        ReservaHabitacion.findOneById(req.param('id'), function Founded(err, value) {
             if (err) {
                 return next(err);
             }
@@ -26,7 +26,7 @@ module.exports = {
     },
 
     edit: function(req, res, next) {
-        Menu.findOne(req.param('id'), function Founded(err, value) {
+        ReservaHabitacion.findOne(req.param('id'), function Founded(err, value) {
             if (err) {
                 return next(err);
             }
@@ -37,20 +37,20 @@ module.exports = {
     },
 
     update: function(req, res, next) {
-        Menu.update(req.param('id'), req.body, function Update(err, value) {
+        ReservaHabitacion.update(req.param('id'), req.body, function Update(err, value) {
             if (err) {
                 return next(err);
             }
-            return res.redirect('menu/show/' + req.param('id'));
+            return res.redirect('reservaHabitacion/show/' + req.param('id'));
         });
     },
 
     delete: function(req, res, next) {
-        Menu.destroy(req.param('id'), function Update(err, value) {
+        ReservaHabitacion.destroy(req.param('id'), function Update(err, value) {
             if (err) {
                 return next(err);
             }
-            return res.redirect('/menu');
+            return res.redirect('/reservaHabitacion');
         });
     },
 
