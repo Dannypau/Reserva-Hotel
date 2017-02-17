@@ -1,0 +1,40 @@
+<div class="">
+  <h1>New reserva</h1>
+
+  <div class="body">
+    <form class="" action="/reserva/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">id_reserva</label>
+          <input type="number" name="id_reserva" value="<%= element.id_reserva %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id_usuario</label>
+          <input type="number" name="id_usuario" value="<%= element.id_usuario %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id_servicio</label>
+          <input type="number" name="id_servicio" value="<%= element.id_servicio %>" required="false">
+        </div>
+        <div class="">
+          <label for="">fecha_inicio</label>
+          <input type="date" name="fecha_inicio" value="<%= element.fecha_inicio %>" required="false">
+        </div>
+        <div class="">
+          <label for="">fecha_fin</label>
+          <input type="date" name="fecha_fin" value="<%= element.fecha_fin %>" required="false">
+        </div>
+        <div class="">
+          <label for="">costo_total</label>
+          <input type="number" name="costo_total" value="<%= element.costo_total %>" required="false">
+        </div>
+        <div class="">
+          <label for="">numero_personas</label>
+          <input type="number" name="numero_personas" value="<%= element.numero_personas %>" required="false">
+        </div>
+      <button type="submit">Update reserva</button>
+    </form>
+    <br />
+    <a href="/reserva">Index</a>
+  </div>
+</div>

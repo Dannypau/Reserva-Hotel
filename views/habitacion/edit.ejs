@@ -1,0 +1,28 @@
+<div class="">
+  <h1>New habitacion</h1>
+
+  <div class="body">
+    <form class="" action="/habitacion/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">id_habitacion</label>
+          <input type="number" name="id_habitacion" value="<%= element.id_habitacion %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id_extra_habitacion</label>
+          <input type="number" name="id_extra_habitacion" value="<%= element.id_extra_habitacion %>" required="true">
+        </div>
+        <div class="">
+          <label for="">id_tipo_habitacion</label>
+          <input type="number" name="id_tipo_habitacion" value="<%= element.id_tipo_habitacion %>" required="false">
+        </div>
+        <div class="">
+          <label for="">numero_piso</label>
+          <input type="number" name="numero_piso" value="<%= element.numero_piso %>" required="false">
+        </div>
+      <button type="submit">Update habitacion</button>
+    </form>
+    <br />
+    <a href="/habitacion">Index</a>
+  </div>
+</div>

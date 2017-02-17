@@ -1,0 +1,24 @@
+<div class="">
+  <h1>New servicio</h1>
+
+  <div class="body">
+    <form class="" action="/servicio/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">id_servicio</label>
+          <input type="number" name="id_servicio" value="<%= element.id_servicio %>" required="false">
+        </div>
+        <div class="">
+          <label for="">desayuno</label>
+          <input type="checkbox" name="desayuno" value="<%= element.desayuno %>" required="false">
+        </div>
+        <div class="">
+          <label for="">parqueadero</label>
+          <input type="checkbox" name="parqueadero" value="<%= element.parqueadero %>" required="false">
+        </div>
+      <button type="submit">Update servicio</button>
+    </form>
+    <br />
+    <a href="/servicio">Index</a>
+  </div>
+</div>

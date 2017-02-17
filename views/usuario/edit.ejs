@@ -1,0 +1,36 @@
+<div class="">
+  <h1>New usuario</h1>
+
+  <div class="body">
+    <form class="" action="/usuario/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">id_usuario</label>
+          <input type="number" name="id_usuario" value="<%= element.id_usuario %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id_perfil</label>
+          <input type="number" name="id_perfil" value="<%= element.id_perfil %>" required="false">
+        </div>
+        <div class="">
+          <label for="">nombre_usuario</label>
+          <input type="text" name="nombre_usuario" value="<%= element.nombre_usuario %>" required="false">
+        </div>
+        <div class="">
+          <label for="">correo</label>
+          <input type="text" name="correo" value="<%= element.correo %>" required="true">
+        </div>
+        <div class="">
+          <label for="">direccion</label>
+          <input type="text" name="direccion" value="<%= element.direccion %>" required="true">
+        </div>
+        <div class="">
+          <label for="">telefono</label>
+          <input type="text" name="telefono" value="<%= element.telefono %>" required="true">
+        </div>
+      <button type="submit">Update usuario</button>
+    </form>
+    <br />
+    <a href="/usuario">Index</a>
+  </div>
+</div>

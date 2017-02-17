@@ -1,0 +1,31 @@
+<h1>Show usuario</h1>
+
+	<p>
+		<strong>id_usuario:</strong>
+		<%= element.id_usuario %>
+	</p>
+	<p>
+		<strong>id_perfil:</strong>
+		<%= element.id_perfil %>
+	</p>
+	<p>
+		<strong>nombre_usuario:</strong>
+		<%= element.nombre_usuario %>
+	</p>
+	<p>
+		<strong>correo:</strong>
+		<%= element.correo %>
+	</p>
+	<p>
+		<strong>direccion:</strong>
+		<%= element.direccion %>
+	</p>
+	<p>
+		<strong>telefono:</strong>
+		<%= element.telefono %>
+	</p>
+
+<br>
+<a href="/usuario/edit/<%= element.id %>">Edit</a>
+<a href="/usuario/create">New</a>
+<a href="/usuario">Back</a>

@@ -1,0 +1,24 @@
+<div class="">
+  <h1>New reHabitacion</h1>
+
+  <div class="body">
+    <form class="" action="/reHabitacion/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">fecha_reserva_habitacion</label>
+          <input type="date" name="fecha_reserva_habitacion" value="<%= element.fecha_reserva_habitacion %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id_habitacion</label>
+          <input type="number" name="id_habitacion" value="<%= element.id_habitacion %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id_reserva</label>
+          <input type="number" name="id_reserva" value="<%= element.id_reserva %>" required="false">
+        </div>
+      <button type="submit">Update reHabitacion</button>
+    </form>
+    <br />
+    <a href="/reHabitacion">Index</a>
+  </div>
+</div>

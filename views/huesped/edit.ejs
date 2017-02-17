@@ -1,0 +1,20 @@
+<div class="">
+  <h1>New huesped</h1>
+
+  <div class="body">
+    <form class="" action="/huesped/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">id_huesped</label>
+          <input type="text" name="id_huesped" value="<%= element.id_huesped %>" required="false">
+        </div>
+        <div class="">
+          <label for="">nombre_huesped</label>
+          <input type="text" name="nombre_huesped" value="<%= element.nombre_huesped %>" required="false">
+        </div>
+      <button type="submit">Update huesped</button>
+    </form>
+    <br />
+    <a href="/huesped">Index</a>
+  </div>
+</div>

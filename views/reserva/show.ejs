@@ -1,0 +1,35 @@
+<h1>Show reserva</h1>
+
+	<p>
+		<strong>id_reserva:</strong>
+		<%= element.id_reserva %>
+	</p>
+	<p>
+		<strong>id_usuario:</strong>
+		<%= element.id_usuario %>
+	</p>
+	<p>
+		<strong>id_servicio:</strong>
+		<%= element.id_servicio %>
+	</p>
+	<p>
+		<strong>fecha_inicio:</strong>
+		<%= element.fecha_inicio %>
+	</p>
+	<p>
+		<strong>fecha_fin:</strong>
+		<%= element.fecha_fin %>
+	</p>
+	<p>
+		<strong>costo_total:</strong>
+		<%= element.costo_total %>
+	</p>
+	<p>
+		<strong>numero_personas:</strong>
+		<%= element.numero_personas %>
+	</p>
+
+<br>
+<a href="/reserva/edit/<%= element.id %>">Edit</a>
+<a href="/reserva/create">New</a>
+<a href="/reserva">Back</a>
