@@ -20,12 +20,7 @@ module.exports = {
             required: true
         },
         precio: {
-            type: 'float',
             required: true
-        },
-        habitaciones: {
-            collection: 'reserva',
-            via: 'reservas',            
         }
     }
 };

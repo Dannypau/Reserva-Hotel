@@ -22,10 +22,6 @@ module.exports = {
         telefono: {
             type: 'string',
             required: true
-        },
-        reservas:{
-         collection:'reserva',
-         via:'id_cliente'
         }
     }
 };

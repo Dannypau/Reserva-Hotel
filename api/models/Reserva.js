@@ -7,6 +7,10 @@ module.exports = {
     autoUpdatedAt: false,
     autoCreatedAt: false,
     attributes: {
+        id_reserva: {
+            type: 'integer',
+            required: false
+        },
         id_cliente: { //todo
             type: 'string',
             required: false
@@ -29,16 +33,8 @@ module.exports = {
         },
         huespedes: {
             collection: 'huesped',
-            via: 'id_reserva'
-        },
-        reservas: {
-            collection: 'habitacion',
-            via: 'habitaciones',
+            via: 'reserva_huesped',
             dominant: true
-        },
-        id_cliente: {
-            model: 'cliente',
-            required: true
         }
     }
 };

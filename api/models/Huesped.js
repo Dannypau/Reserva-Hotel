@@ -7,6 +7,10 @@ module.exports = {
     autoUpdatedAt: false,
     autoCreatedAt: false,
     attributes: {
+        id_reserva: { //to do
+            type: 'integer',
+            required: false
+        },
         nombre_huesped: {
             type: 'string',
             required: false
@@ -15,8 +19,9 @@ module.exports = {
             type: 'string',
             required: false
         },
-        id_reserva: {
-            model: 'reserva'
+        reserva_huesped: {
+            collection: 'reserva',
+            via:'huespedes'
         }
     }
 };
