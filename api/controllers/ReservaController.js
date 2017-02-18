@@ -87,7 +87,7 @@ module.exports = {
                 if (err) {
                     return next(err);
                 }
-                //aloja a los huespedes                
+                //aloja a los huespedes                                
                 var huespedes = parametros.nombre_huesped,
                     dnis = parametros.dni;
                 for (var i in huespedes) {
