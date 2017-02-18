@@ -1,0 +1,63 @@
+<h1>huespedReservaHuespedReservaHuespedes</h1>
+
+
+<% if (result.length == 0) { %>
+  <h4>
+    0 huespedReservaHuespedReservaHuespedes
+  </h4>
+<% } else { %>
+<table>
+	<thead>
+    <th>#</th>
+		<th>id</th>
+			<th>id</th>
+			<th>huesped_reserva_huesped</th>
+			<th>reserva_huespedes</th>
+
+		<th>created at</th>
+		<th>updated at</th>
+		<th colspan="3"></th>
+	</thead>
+
+	<tbody>
+		<% result.forEach((item, i) => { %>
+			<tr>
+				<td>
+					<%= (i + 1) %>
+				</td>
+				<td>
+					<%= item.id %>
+				</td>
+					<td>
+						<%= item.id %>
+					</td>
+					<td>
+						<%= item.huesped_reserva_huesped %>
+					</td>
+					<td>
+						<%= item.reserva_huespedes %>
+					</td>
+				<td>
+					<%= item.createdAt %>
+				</td>
+				<td>
+					<%= item.updatedAt %>
+				</td>
+				<td>
+					<a href="/huespedReservaHuespedReservaHuespedes/show/<%= item.id %>">Show</a>
+				</td>
+				<td>
+					<a href="/huespedReservaHuespedReservaHuespedes/delete/<%= item.id %>">Delete</a>
+				</td>
+        <td>
+					<a href="/huespedReservaHuespedReservaHuespedes/edit/<%= item.id %>">Edit</a>
+				</td>
+			</tr>
+			<% }) %>
+	</tbody>
+</table>
+
+<% } %>
+
+<br>
+<a href="/huespedReservaHuespedReservaHuespedes/create">New</a>

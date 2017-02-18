@@ -1,0 +1,24 @@
+<div class="">
+  <h1>New habitacionHabitacionesReservaReservas</h1>
+
+  <div class="body">
+    <form class="" action="/habitacionHabitacionesReservaReservas/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="false">
+        </div>
+        <div class="">
+          <label for="">habitacion_habitaciones</label>
+          <input type="number" name="habitacion_habitaciones" value="<%= element.habitacion_habitaciones %>" required="true">
+        </div>
+        <div class="">
+          <label for="">reserva_reservas</label>
+          <input type="number" name="reserva_reservas" value="<%= element.reserva_reservas %>" required="true">
+        </div>
+      <button type="submit">Update habitacionHabitacionesReservaReservas</button>
+    </form>
+    <br />
+    <a href="/habitacionHabitacionesReservaReservas">Index</a>
+  </div>
+</div>
