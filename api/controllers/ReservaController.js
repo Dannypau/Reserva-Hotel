@@ -75,21 +75,36 @@ module.exports = {
     },
     crear: function(req, res, next) {
         var parametros = req.allParams();
-        Habitacion.find(parametros.hab).exec(function(err, habitaciones) {
+        Habitacion.find(parametros.id_hab).exec(function(err, habitaciones) {
             if (err) {
                 return next(err);
             }
             //crear la reserva
             Reserva.create({
-                id_cliente: 1,
+                id_cliente: parametros.id_cliente,
                 habitaciones: habitaciones
             }).exec(function(err, reserva) {
                 if (err) {
                     return next(err);
                 }
+                //aloja a los huespedes                
+                var huespedes = parametros.nombre_huesped,
+                    dnis = parametros.dni;
+                for (var i in huespedes) {
+                    Huesped.create({
+                        nombre_huesped: huespedes[i],
+                        dni: dnis[i],
+                        id_reserva: reserva.id
+                    }).exec(function(err, huesped) {
+                        if (err) {
+                            return next(err);
+                        }
+                        reserva.huespedes.add(huesped);
+                    })
+                }
+                return res.redirect('/');
             })
 
         })
     }
-
 };
