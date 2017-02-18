@@ -4,15 +4,9 @@
 */
 
 module.exports = {
+    autoUpdatedAt: false,
+    autoCreatedAt: false,
     attributes: {
-        id_habitacion: {
-            type: 'integer',
-            required: false
-        },
-        disponibilidad: {
-            type: 'boolean',
-            required: false
-        },
         numero_piso: {
             type: 'integer',
             required: false

@@ -4,12 +4,10 @@
 */
 
 module.exports = {
+    autoUpdatedAt: false,
+    autoCreatedAt: false,
     attributes: {
-        id_huesped: {
-            type: 'string',
-            required: false
-        },
-        id_habitacion: {
+        id_reserva: { //to do
             type: 'integer',
             required: false
         },
@@ -20,6 +18,10 @@ module.exports = {
         dni: {
             type: 'string',
             required: false
+        },
+        reserva_huesped: {
+            collection: 'reserva',
+            via:'huespedes'
         }
     }
 };

@@ -4,8 +4,10 @@
 */
 
 module.exports = {
+    autoUpdatedAt:false,
+    autoCreatedAt:false,
     attributes: {
-        id_cliente: {
+        dni: {
             type: 'string',
             required: false
         },
@@ -14,10 +16,6 @@ module.exports = {
             required: false
         },
         correo: {
-            type: 'string',
-            required: true
-        },
-        direccion: {
             type: 'string',
             required: true
         },

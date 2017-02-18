@@ -4,12 +4,14 @@
 */
 
 module.exports = {
+    autoUpdatedAt: false,
+    autoCreatedAt: false,
     attributes: {
         id_reserva: {
             type: 'integer',
             required: false
         },
-        id_cliente: {
+        id_cliente: { //todo
             type: 'string',
             required: false
         },
@@ -21,12 +23,18 @@ module.exports = {
             type: 'date',
             required: false
         },
+        desayuno: {
+            type: 'boolean',
+            defaultsTo: false
+        },
         costo_total: {
+            type: 'float',
             required: false
         },
-        numero_personas: {
-            type: 'integer',
-            required: false
+        huespedes: {
+            collection: 'huesped',
+            via: 'reserva_huesped',
+            dominant: true
         }
     }
 };
