@@ -53,5 +53,43 @@ module.exports = {
             return res.redirect('/reserva');
         });
     },
+    buscar: function(req, res, next) {
+        Reserva.find({
+                fecha_inicio: {
+                    '>=': new Date(req.param('fecha_inicio')),
+                },
+                fecha_fin: {
+                    '<=': new Date(req.param('fecha_fin'))
+                }
+            })
+            .populate('habitaciones')
+            .exec(function(err, habitaciones) {
+                if (err) {
+                    return next(err);
+                }
+                sails.log.info('regresando habitaciones');
+                sails.log.info(habitaciones);
+                return habitaciones;
+                sails.log.info('habitaciones regresadas');
+            });
+    },
+    crear: function(req, res, next) {
+        var parametros = req.allParams();
+        Habitacion.find(parametros.hab).exec(function(err, habitaciones) {
+            if (err) {
+                return next(err);
+            }
+            //crear la reserva
+            Reserva.create({
+                id_cliente: 1,
+                habitaciones: habitaciones
+            }).exec(function(err, reserva) {
+                if (err) {
+                    return next(err);
+                }
+            })
+
+        })
+    }
 
 };

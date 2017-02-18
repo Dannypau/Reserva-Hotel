@@ -7,10 +7,6 @@ module.exports = {
     autoUpdatedAt: false,
     autoCreatedAt: false,
     attributes: {
-        id_cliente: { //todo
-            type: 'string',
-            required: false
-        },
         fecha_inicio: {
             type: 'date',
             required: false
@@ -31,10 +27,10 @@ module.exports = {
             collection: 'huesped',
             via: 'id_reserva'
         },
-        reservas: {
+        habitaciones: {
             collection: 'habitacion',
-            via: 'habitaciones',
-            dominant: true
+            via: 'reservas',
+            dominant: true            
         },
         id_cliente: {
             model: 'cliente',

@@ -53,5 +53,20 @@ module.exports = {
             return res.redirect('/huesped');
         });
     },
+    creartodos: function(req, res, next) {
+        var parametros = req.allParams();
+        sails.log.info(parametros);
+        var huespedes = parametros.nombre_huesped,
+            dnis = parametros.dni;
+
+        for (var i in huespedes) {
+            //sails.log.info(huespedes[i]+' '+dnis[i]);
+            Huesped.create({
+                nombre_huesped: huespedes[i],
+                dni:dnis[i]
+            })
+        }
+
+    },
 
 };

@@ -7,6 +7,10 @@ module.exports = {
     autoUpdatedAt: false,
     autoCreatedAt: false,
     attributes: {
+        tipo: {
+            type: 'string',
+            required: false
+        },
         numero_piso: {
             type: 'integer',
             required: false
@@ -23,9 +27,9 @@ module.exports = {
             type: 'float',
             required: true
         },
-        habitaciones: {
+        reservas: {
             collection: 'reserva',
-            via: 'reservas',
+            via: 'habitaciones',
         }
     }
 };
