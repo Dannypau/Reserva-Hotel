@@ -10,12 +10,11 @@
 	<thead>
     <th>#</th>
 		<th>id</th>
-			<th>id_reserva</th>
 			<th>id_cliente</th>
 			<th>fecha_inicio</th>
 			<th>fecha_fin</th>
 			<th>costo_total</th>
-			<th>numero_personas</th>
+			<th>huespedes</th>
 
 		<th>created at</th>
 		<th>updated at</th>
@@ -24,6 +23,7 @@
 
 	<tbody>
 		<% result.forEach((item, i) => { %>
+  <% var huespedes=item.huespedes %>
 			<tr>
 				<td>
 					<%= (i + 1) %>
@@ -31,9 +31,6 @@
 				<td>
 					<%= item.id %>
 				</td>
-					<td>
-						<%= item.id_reserva %>
-					</td>
 					<td>
 						<%= item.id_cliente %>
 					</td>
@@ -46,15 +43,9 @@
 					<td>
 						<%= item.costo_total %>
 					</td>
-					<td>
-						<%= item.numero_personas %>
-					</td>
-				<td>
-					<%= item.createdAt %>
-				</td>
-				<td>
-					<%= item.updatedAt %>
-				</td>
+     <td>
+      <%= huespedes.find().id %>
+     </td>
 				<td>
 					<a href="/reserva/show/<%= item.id %>">Show</a>
 				</td>
