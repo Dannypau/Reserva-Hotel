@@ -5,16 +5,8 @@
 	<div class="body">
 		<form class="" action="/habitacion/create" method="post">
 				<div class="">
-					<label for="">id_habitacion</label>
-					<input type="number" name="id_habitacion" value="" required="false">
-				</div>
-				<div class="">
-					<label for="">disponibilidad</label>
-					<input type="checkbox" name="disponibilidad" value="" required="false">
-				</div>
-				<div class="">
 					<label for="">numero_piso</label>
-					<input type="number" name="numero_piso" value="" required="false">
+					<input type="number" name="numero_piso" value="" required="true">
 				</div>
 				<div class="">
 					<label for="">jacuzzi</label>
@@ -26,7 +18,11 @@
 				</div>
 				<div class="">
 					<label for="">precio</label>
-					<input type="" name="precio" value="" required="true">
+					<input type="number" name="precio" value="" required="true">
+				</div>
+				<div class="">
+					<label for="">id</label>
+					<input type="number" name="id" value="" required="false">
 				</div>
 			<button type="submit">Save habitacion</button>
 		</form>

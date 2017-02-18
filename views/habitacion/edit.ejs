@@ -5,16 +5,8 @@
     <form class="" action="/habitacion/update" method="post">
       <input name="id" value="<%= element.id %>" hidden="true" required>
         <div class="">
-          <label for="">id_habitacion</label>
-          <input type="number" name="id_habitacion" value="<%= element.id_habitacion %>" required="false">
-        </div>
-        <div class="">
-          <label for="">disponibilidad</label>
-          <input type="checkbox" name="disponibilidad" value="<%= element.disponibilidad %>" required="false">
-        </div>
-        <div class="">
           <label for="">numero_piso</label>
-          <input type="number" name="numero_piso" value="<%= element.numero_piso %>" required="false">
+          <input type="number" name="numero_piso" value="<%= element.numero_piso %>" required="true">
         </div>
         <div class="">
           <label for="">jacuzzi</label>
@@ -26,7 +18,11 @@
         </div>
         <div class="">
           <label for="">precio</label>
-          <input type="" name="precio" value="<%= element.precio %>" required="true">
+          <input type="number" name="precio" value="<%= element.precio %>" required="true">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="false">
         </div>
       <button type="submit">Update habitacion</button>
     </form>

@@ -5,24 +5,24 @@
     <form class="" action="/cliente/update" method="post">
       <input name="id" value="<%= element.id %>" hidden="true" required>
         <div class="">
-          <label for="">id_cliente</label>
-          <input type="text" name="id_cliente" value="<%= element.id_cliente %>" required="false">
+          <label for="">dni</label>
+          <input type="" name="dni" value="<%= element.dni %>" required="true">
         </div>
         <div class="">
           <label for="">nombre_cliente</label>
-          <input type="text" name="nombre_cliente" value="<%= element.nombre_cliente %>" required="false">
+          <input type="" name="nombre_cliente" value="<%= element.nombre_cliente %>" required="true">
         </div>
         <div class="">
           <label for="">correo</label>
-          <input type="text" name="correo" value="<%= element.correo %>" required="true">
-        </div>
-        <div class="">
-          <label for="">direccion</label>
-          <input type="text" name="direccion" value="<%= element.direccion %>" required="true">
+          <input type="" name="correo" value="<%= element.correo %>" required="true">
         </div>
         <div class="">
           <label for="">telefono</label>
-          <input type="text" name="telefono" value="<%= element.telefono %>" required="true">
+          <input type="" name="telefono" value="<%= element.telefono %>" required="true">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="false">
         </div>
       <button type="submit">Update cliente</button>
     </form>

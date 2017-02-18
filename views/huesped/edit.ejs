@@ -5,20 +5,20 @@
     <form class="" action="/huesped/update" method="post">
       <input name="id" value="<%= element.id %>" hidden="true" required>
         <div class="">
-          <label for="">id_huesped</label>
-          <input type="text" name="id_huesped" value="<%= element.id_huesped %>" required="false">
-        </div>
-        <div class="">
-          <label for="">id_habitacion</label>
-          <input type="number" name="id_habitacion" value="<%= element.id_habitacion %>" required="false">
-        </div>
-        <div class="">
           <label for="">nombre_huesped</label>
-          <input type="text" name="nombre_huesped" value="<%= element.nombre_huesped %>" required="false">
+          <input type="" name="nombre_huesped" value="<%= element.nombre_huesped %>" required="true">
         </div>
         <div class="">
           <label for="">dni</label>
-          <input type="text" name="dni" value="<%= element.dni %>" required="false">
+          <input type="" name="dni" value="<%= element.dni %>" required="true">
+        </div>
+        <div class="">
+          <label for="">id_reserva</label>
+          <input type="number" name="id_reserva" value="<%= element.id_reserva %>" required="true">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="false">
         </div>
       <button type="submit">Update huesped</button>
     </form>

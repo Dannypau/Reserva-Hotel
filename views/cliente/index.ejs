@@ -10,11 +10,11 @@
 	<thead>
     <th>#</th>
 		<th>id</th>
-			<th>id_cliente</th>
+			<th>dni</th>
 			<th>nombre_cliente</th>
 			<th>correo</th>
-			<th>direccion</th>
 			<th>telefono</th>
+			<th>id</th>
 
 		<th>created at</th>
 		<th>updated at</th>
@@ -31,7 +31,7 @@
 					<%= item.id %>
 				</td>
 					<td>
-						<%= item.id_cliente %>
+						<%= item.dni %>
 					</td>
 					<td>
 						<%= item.nombre_cliente %>
@@ -40,10 +40,10 @@
 						<%= item.correo %>
 					</td>
 					<td>
-						<%= item.direccion %>
+						<%= item.telefono %>
 					</td>
 					<td>
-						<%= item.telefono %>
+						<%= item.id %>
 					</td>
 				<td>
 					<%= item.createdAt %>

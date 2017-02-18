@@ -5,28 +5,28 @@
     <form class="" action="/reserva/update" method="post">
       <input name="id" value="<%= element.id %>" hidden="true" required>
         <div class="">
-          <label for="">id_reserva</label>
-          <input type="number" name="id_reserva" value="<%= element.id_reserva %>" required="false">
-        </div>
-        <div class="">
           <label for="">id_cliente</label>
-          <input type="text" name="id_cliente" value="<%= element.id_cliente %>" required="false">
+          <input type="number" name="id_cliente" value="<%= element.id_cliente %>" required="true">
         </div>
         <div class="">
           <label for="">fecha_inicio</label>
-          <input type="date" name="fecha_inicio" value="<%= element.fecha_inicio %>" required="false">
+          <input type="date" name="fecha_inicio" value="<%= element.fecha_inicio %>" required="true">
         </div>
         <div class="">
           <label for="">fecha_fin</label>
-          <input type="date" name="fecha_fin" value="<%= element.fecha_fin %>" required="false">
+          <input type="date" name="fecha_fin" value="<%= element.fecha_fin %>" required="true">
+        </div>
+        <div class="">
+          <label for="">desayuno</label>
+          <input type="checkbox" name="desayuno" value="<%= element.desayuno %>" required="true">
         </div>
         <div class="">
           <label for="">costo_total</label>
-          <input type="" name="costo_total" value="<%= element.costo_total %>" required="false">
+          <input type="number" name="costo_total" value="<%= element.costo_total %>" required="true">
         </div>
         <div class="">
-          <label for="">numero_personas</label>
-          <input type="number" name="numero_personas" value="<%= element.numero_personas %>" required="false">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="false">
         </div>
       <button type="submit">Update reserva</button>
     </form>
