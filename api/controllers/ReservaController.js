@@ -92,7 +92,7 @@ module.exports = {
 
         })
     },
-    /*  script: function(req, res, next) {
+      script: function(req, res, next) {
           var id_cliente = 1,
               id_hab = [11,12,13,14,15],
               fecha_reserva = new Date(),
@@ -138,5 +138,5 @@ module.exports = {
               })
 
           })
-      }*/
+      }
 };
