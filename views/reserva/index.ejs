@@ -2,74 +2,71 @@
 
 
 <% if (result.length == 0) { %>
-  <h4>
+    <h4>
     0 reserva
   </h4>
-<% } else { %>
-<table>
-	<thead>
-    <th>#</th>
-		<th>id</th>
-			<th>id_cliente</th>
-			<th>fecha_inicio</th>
-			<th>fecha_fin</th>
-			<th>desayuno</th>
-			<th>costo_total</th>
-			<th>id</th>
+    <% } else { %>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+            <thead>
+                <th>#</th>
+                <th>id</th>
+                <th>id_cliente</th>
+                <th>fecha_inicio</th>
+                <th>fecha_fin</th>
+                <th>desayuno</th>
+                <th>costo_total</th>
+                <th>id</th>
+                <th>Reservas</th>
+                <th colspan="3"></th>
+            </thead>
 
-		<th>created at</th>
-		<th>updated at</th>
-		<th colspan="3"></th>
-	</thead>
+            <tbody>
+                <% result.forEach((item, i) => { %>
+                    <tr>
+                        <td>
+                            <%= (i + 1) %>
+                        </td>
+                        <td>
+                            <%= item.id %>
+                        </td>
+                        <td>
+                            <%= item.id_cliente %>
+                        </td>
+                        <td>
+                            <%= item.fecha_inicio %>
+                        </td>
+                        <td>
+                            <%= item.fecha_fin %>
+                        </td>
+                        <td>
+                            <%= item.desayuno %>
+                        </td>
+                        <td>
+                            <%= item.costo_total %>
+                        </td>
+                        <td>
+                            <%= item.id %>
+                        </td>
+                        <td>
+                            <%= item.reservas %>
+                        </td>
 
-	<tbody>
-		<% result.forEach((item, i) => { %>
-			<tr>
-				<td>
-					<%= (i + 1) %>
-				</td>
-				<td>
-					<%= item.id %>
-				</td>
-					<td>
-						<%= item.id_cliente %>
-					</td>
-					<td>
-						<%= item.fecha_inicio %>
-					</td>
-					<td>
-						<%= item.fecha_fin %>
-					</td>
-					<td>
-						<%= item.desayuno %>
-					</td>
-					<td>
-						<%= item.costo_total %>
-					</td>
-					<td>
-						<%= item.id %>
-					</td>
-				<td>
-					<%= item.createdAt %>
-				</td>
-				<td>
-					<%= item.updatedAt %>
-				</td>
-				<td>
-					<a href="/reserva/show/<%= item.id %>">Show</a>
-				</td>
-				<td>
-					<a href="/reserva/delete/<%= item.id %>">Delete</a>
-				</td>
-        <td>
-					<a href="/reserva/edit/<%= item.id %>">Edit</a>
-				</td>
-			</tr>
-			<% }) %>
-	</tbody>
-</table>
+                        <td>
+                            <a href="/reserva/show/<%= item.id %>">Show</a>
+                        </td>
+                        <td>
+                            <a href="/reserva/delete/<%= item.id %>">Delete</a>
+                        </td>
+                        <td>
+                            <a href="/reserva/edit/<%= item.id %>">Edit</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+        </div>
+        <% } %>
 
-<% } %>
-
-<br>
-<a href="/reserva/create">New</a>
+            <br>
+            <a href="/reserva/create">New</a>

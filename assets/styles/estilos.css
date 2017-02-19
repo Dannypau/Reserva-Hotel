@@ -1,0 +1,53 @@
+.opaque1 {
+    background-color: rgba(54, 25, 25, .5);
+    color: white;
+    border-radius: 5px;
+}
+
+body{
+   background-image:url("../imagenes/fondo.jpg");
+   background-color:black;
+}
+
+.checkbox label {
+  display: inline-block;
+  cursor: pointer;
+  color: #0074D9;
+  padding: 5px 15px 5px 51px;
+  font-size: 1em;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.checkbox label:hover {
+  background: rgba(0, 116, 217, 0.1);
+}
+.checkbox label:before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  left: 15px;
+  border-radius: 50%;
+  background: none;
+  border: 3px solid #0074D9;
+}
+    
+    
+.checkbox label:before {
+  border-radius: 5px;
+}
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+.checkbox input[type="checkbox"]:checked + label:before {
+  display: none;
+}
+.checkbox input[type="checkbox"]:checked + label {
+  background: #0074D9;
+  color: #fff;
+  padding: 5px 15px;
+  
+}

@@ -1,28 +1,38 @@
-<div class="">
-	<h1>New huesped</h1>
-	<h5>By sails-inverse-model</h5>
-
-	<div class="body">
-		<form class="" action="/huesped/create" method="post">
+<div class="container">
+<div class="col-sm-3"></div>
+    <div class="signup-form-container col-sm-6 opaque1">
+        
+	        <form role="form" id="register-form" autocomplete="off" action="/huesped/create" method="post">
+	        <div class="form-header">
+                <h3 class="form-title"><i class="fa fa-user"></i>Registrar Huésped(es)</h3>
+            </div>
+            <% for (var i = 0; i < 9; i++) { %>
+	        <div class="form-body row">
+				<div class="form-group col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input name="nombre_huesped" type="text" class="form-control" placeholder="Nombre del Huésped">
+                    </div>
+                </div>
+				<div class="form-group col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></div>
+                        <input name="dni" type="number" class="form-control" placeholder="Cédula/Pasaporte">
+                    </div>
+                </div>
 				<div class="">
-					<label for="">nombre_huesped</label>
-					<input type="" name="nombre_huesped" value="" required="true">
+					<input type="hidden" name="id_reserva" value="" required="true">
 				</div>
 				<div class="">
-					<label for="">dni</label>
-					<input type="" name="dni" value="" required="true">
+					<input type="hidden" name="id" value="" required="false">
 				</div>
-				<div class="">
-					<label for="">id_reserva</label>
-					<input type="number" name="id_reserva" value="" required="true">
-				</div>
-				<div class="">
-					<label for="">id</label>
-					<input type="number" name="id" value="" required="false">
-				</div>
-			<button type="submit">Save huesped</button>
+                </div>
+                 <% } %>
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-log-in"></span> Registrar Huésped(es)!
+                </button>
 		</form>
 		<br />
-		<a href="/huesped">Index</a>
 	</div>
+<div class="col-sm-3"></div>
 </div>

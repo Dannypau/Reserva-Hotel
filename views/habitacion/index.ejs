@@ -1,71 +1,104 @@
-<h1>habitacion</h1>
+<div class="container">
 
-
+<h1>Habitaciones Disponibles</h1>
 <% if (result.length == 0) { %>
-  <h4>
+    <h4>
     0 habitacion
   </h4>
-<% } else { %>
-<table>
-	<thead>
-    <th>#</th>
-		<th>id</th>
-			<th>numero_piso</th>
-			<th>jacuzzi</th>
-			<th>vista_mar</th>
-			<th>precio</th>
-			<th>id</th>
+    <% } else { %>
+       
+        <div class="table-responsive">
+            <table class="table table-bordered ">
+                <thead class="opaque1">
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Piso</th>
+                    <th>Jacuzzi</th>
+                    <th>Vista al mar</th>
+                    <th>Precio</th>
+                    <th>Tipo</th>
+                    <th></th>
+                    <th colspan="3"></th>
+                </thead>
 
-		<th>created at</th>
-		<th>updated at</th>
-		<th colspan="3"></th>
-	</thead>
+                <tbody class="opaque1">
+                    <% result.forEach((item, i) => { %>
+                        <tr>
+                            <td>
+                                <%= (i + 1) %>
+                            </td>
+                            <td>
+                                <%= item.id %>
+                            </td>
+                            <td>
+                                <%= item.numero_piso %>
+                            </td>
+                            <td>
+                                 <% if (item.jacuzzi) { %>
+                                    Si
+                                    <% } else{ %>
+                                    No
+                                    <% } %>
+                            </td>
+                            <td>
+                                <% if (item.vista_mar) { %>
+                                    Si
+                                    <% } else{ %>
+                                    No
+                                    <% } %>
+                            </td>
+                            <td>
+                                <%= item.precio %>
+                            </td>
+                            <td>
+                                <%= item.tipo %>
+                            </td>
+                            <td>
+                               
+                                <% if (item.jacuzzi) { %>
+                                    <% var s="roomjacuzzi"%>
+                                    <% } else if (item.vista_mar) { %>
+                                        <% if (item.jacuzzi == 'Simple') { %>
+                                           <% var s="roomindividualmar" %> 
+                                            <% } else { %>
+                                                <% var s="roomdoblemar" %> 
+                                                <% } %>
+                                                    <% } else{ %>
+                                                        <% if (item.jacuzzi == 'Simple') { %>
+                                                           <% var s="roomindvidual" %> 
+                                                            <% } else { %>
+                                                               <% var s="roomdoble" %> 
+                                                                <% } %>
 
-	<tbody>
-		<% result.forEach((item, i) => { %>
-			<tr>
-				<td>
-					<%= (i + 1) %>
-				</td>
-				<td>
-					<%= item.id %>
-				</td>
-					<td>
-						<%= item.numero_piso %>
-					</td>
-					<td>
-						<%= item.jacuzzi %>
-					</td>
-					<td>
-						<%= item.vista_mar %>
-					</td>
-					<td>
-						<%= item.precio %>
-					</td>
-					<td>
-						<%= item.id %>
-					</td>
-				<td>
-					<%= item.createdAt %>
-				</td>
-				<td>
-					<%= item.updatedAt %>
-				</td>
-				<td>
-					<a href="/habitacion/show/<%= item.id %>">Show</a>
-				</td>
-				<td>
-					<a href="/habitacion/delete/<%= item.id %>">Delete</a>
-				</td>
-        <td>
-					<a href="/habitacion/edit/<%= item.id %>">Edit</a>
-				</td>
-			</tr>
-			<% }) %>
-	</tbody>
-</table>
+                                                                    <% } %> 
+                                                                  <img data-toggle="modal" data-target="#myModal<%= i %>" src= "imagenes/<%= s %>.jpg" alt="<%= s %>" height="100">
+<div id="myModal<%= i %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+          <img src= "imagenes/<%= s %>.jpg" class="img-responsive">
+        </div>
+    </div>
+  </div>
+</div>
 
-<% } %>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                        <input type="checkbox" name="checkbox<%= i %>" id="checkbox<%= i %>">
+                        <label for="checkbox<%= i %>">Aceptar</label>
+                                </div>
+                                
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+        
+        <% } %>
 
-<br>
-<a href="/habitacion/create">New</a>
+            <br>
+            <a href="/habitacion/create">New</a>
+            
+           </div>

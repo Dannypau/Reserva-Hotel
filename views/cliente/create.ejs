@@ -1,32 +1,74 @@
-<div class="">
-	<h1>New cliente</h1>
-	<h5>By sails-inverse-model</h5>
+<div class="container">
+<div class="col-sm-3"></div>
+    <div class="signup-form-container col-sm-6 opaque1">
 
-	<div class="body">
-		<form class="" action="/cliente/create" method="post">
-				<div class="">
-					<label for="">dni</label>
-					<input type="" name="dni" value="" required="true">
-				</div>
-				<div class="">
-					<label for="">nombre_cliente</label>
-					<input type="" name="nombre_cliente" value="" required="true">
-				</div>
-				<div class="">
-					<label for="">correo</label>
-					<input type="" name="correo" value="" required="true">
-				</div>
-				<div class="">
-					<label for="">telefono</label>
-					<input type="" name="telefono" value="" required="true">
-				</div>
-				<div class="">
-					<label for="">id</label>
-					<input type="number" name="id" value="" required="false">
-				</div>
-			<button type="submit">Save cliente</button>
-		</form>
-		<br />
-		<a href="/cliente">Index</a>
-	</div>
+        <!-- form start -->
+        <form role="form" id="register-form" autocomplete="off" action="/cliente/create" method="post">
+
+            <div class="form-header">
+                <h3 class="form-title"><i class="fa fa-user"></i>Registrar Usuario</h3>
+              
+            </div>
+
+            <div class="form-body">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input name="nombre_cliente" type="text" class="form-control" placeholder="Nombre de Usuario">
+                    </div>
+                    <span class="help-block" id="error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></div>
+                        <input name="dni" type="text" class="form-control" placeholder="Cédula/Pasaporte">
+                    </div>
+                    <span class="help-block" id="error"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        <input name="correo" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <span class="help-block" id="error"></span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></div>
+                        <input name="telefono" type="text" class="form-control" placeholder="Teléfono">
+                    </div>
+                    <span class="help-block" id="error"></span>
+                </div>
+                <div class="row">
+
+                    <div class="form-group col-lg-6">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                            <input name="password" id="password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <span class="help-block" id="error"></span>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                            <input name="cpassword" type="password" class="form-control" placeholder="Retype Password">
+                        </div>
+                        <span class="help-block" id="error"></span>
+                    </div>
+
+                </div>
+            </div>
+                <button type="submit" class="btn btn-info">
+                    <span class="glyphicon glyphicon-log-in"></span> Registrarme!
+                </button>
+        </form>
+        <br />
+    </div>
+    <br />
+    <div class="col-sm-3"></div>
 </div>
