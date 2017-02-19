@@ -1,37 +1,67 @@
-
-   <div class="container opaque1">
+<div class="container opaque1">
     <div class="bd-example" data-example-id="">
         <form class="form-inline" action="/habitacion" method="post">
             <h2>Debes ingresar los datos con los que desea realizar su reserva.</h2>
 
             <div class="row">
-                <label for="example-number-input" class="col-md-1 col-form-label" >Fecha Inicio:</label>
-                <div class="col-md-2">
-                    <input type="date" class="form-control" name="fechaI" id="dateDefault" onchange="updateInputDate();" >
+                <div class="col-sm-2">
+                    <label for="dateDefault">Fecha Inicio:</label>
                 </div>
-                <label for="example-number-input" class="col-md-1 col-form-label">Fecha Fin:</label>
-                <div class="col-md-2">
-                    
-                    
-                   
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="fechaI" id="dateDefault" onchange="updateInputDate();">
+                </div>
+                <div class="col-sm-2">
+                    <label for="dateDefault2">Fecha Fin:</label>
+                </div>
+                <div class="col-sm-2">
                     <input type="date" class="form-control" name="fechaF" id="dateDefault2">
                 </div>
-                <label for="example-number-input" class="col-md-1 col-form-label">Tipo de Habitación:</label>
                 <div class="col-md-2">
+                    <label for="sel1">Tipo de Habitación:</label>
+                </div>
+                <div class="col-sm-2">
                     <select class="form-control" id="sel1" name="tipo">
                         <option>Simple</option>
                         <option>Doble</option>
                     </select>
                 </div>
-                <div class="col-md-1">
-                <h3> </h3>
-                </div>
-                <div class="col-md-2">
-                   <input type="submit" class="btn btn-default" value="Buscar">
-                </div>
-                
             </div>
+<br>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for="huespedes">Número de huéspedes:</label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="number" class="form-control" id="huespedes">
+                </div>
+                <div class="col-sm-2">
+                    <label>Jacuzzi:</label>
+                </div>
+
+                <div class="checkbox col-sm-2">
+                    <input type="checkbox" name="checkbox1" id="checkbox1">
+                    <label for="checkbox1" style="padding: 5px 15px 5px 51px">Jacuzzi</label>
+                </div>
+                <div class="col-sm-2">
+                    <label>Vista al mar:</label>
+                </div>
+                <div class="checkbox col-sm-2">
+                    <input type="checkbox" name="checkbox2" id="checkbox2">
+                    <label for="checkbox2" style="padding: 5px 15px 5px 51px">Vista al Mar</label>
+                </div>
+
+            </div>
+               <br>
+                <div align="center">
+                <input type="submit" class="btn btn-default" value="Buscar">
+                </div>
         </form>
     </div>
     <br>
+</div>
+<br>
+
+<div class="container opaque1">
+Hola
 </div>
