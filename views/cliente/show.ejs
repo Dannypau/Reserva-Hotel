@@ -1,27 +1,30 @@
-<h1>Show cliente</h1>
-
+<div class="container">
+<div class="col-sm-3"></div>
+    <div class="signup-form-container col-sm-6 opaque1">
+    <h1>Perfil Personal</h1>
+    <img src="/imagenes/perfil.jpg" alt="">
 	<p>
-		<strong>dni:</strong>
+		<strong>Dni:</strong>
 		<%= element.dni %>
 	</p>
 	<p>
-		<strong>nombre_cliente:</strong>
+		<strong>Nombre:</strong>
 		<%= element.nombre_cliente %>
 	</p>
 	<p>
-		<strong>correo:</strong>
+		<strong>Correo:</strong>
 		<%= element.correo %>
 	</p>
 	<p>
-		<strong>telefono:</strong>
+		<strong>Teléfono:</strong>
 		<%= element.telefono %>
 	</p>
-	<p>
-		<strong>id:</strong>
-		<%= element.id %>
-	</p>
+	
 
 <br>
 <a href="/cliente/edit/<%= element.id %>">Edit</a>
 <a href="/cliente/create">New</a>
 <a href="/cliente">Back</a>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
