@@ -62,7 +62,7 @@ module.exports = {
                 sails.log.info('error al buscar las reservas');
                 return next(err);
             }
-            if (Object.keys(reservas).length != 0) {//si hay reservas en esa fecha
+            if (Object.keys(reservas).length != 0) { //si hay reservas en esa fecha
                 var ocupadas = [];
                 for (var i in reservas) {
                     aux = reservas[i].habitaciones;
@@ -71,7 +71,7 @@ module.exports = {
                             ocupadas.push(aux[j].id);
                         }
                     }
-                }                
+                }
                 Habitacion.find({
                     id: {
                         '!': ocupadas
@@ -81,22 +81,25 @@ module.exports = {
                         sails.log.info('error al buscar las habitaciones');
                         return next(err);
                     }
-                    return res.json(disponibles);
+                    return res.view('resultado', {
+                        habitaciones: disponibles
+                    });
                 })
-            } else {//si no hay reservas en esas fechas
-                Habitacion.find().exec(function(err, habitaciones) {
+            } else { //si no hay reservas en esas fechas
+                Habitacion.find().exec(function(err, todas) {
                     if (err) {
                         sails.log.info('error al buscar las toditas');
                         return next(err);
                     }
-                    return res.json(habitaciones);
+                    return res.view('resultado', {
+                        habitaciones: todas
+                    });
                 });
             }
             //
         });
     },
     hab: function(req, res, next) {
-        sails.log(req.param('num_huespedes'))
         return res.view('resultado', {
             total: req.param('num_huespedes')
         });

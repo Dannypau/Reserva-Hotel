@@ -17,14 +17,56 @@
                     <th>Reservar</th>
                 </thead>
                 <tbody class="opaque1">
-                    <%for(var i=0;i<total;i++){%>
+                    <%habitaciones.forEach((habitacion, i) => {%>
                         <tr>
-                            <td>1</td>
-                            <td>si</td>
-                            <td>si</td>
-                            <td>simple</td>
-                            <td>imagen</td>
-                            <td>precio</td>
+                            <td>
+                                <%=habitacion.numero_piso%>
+                            </td>
+                            <td>
+                                <%=habitacion.jacuzzi%>
+                            </td>
+                            <td>
+                                <%=habitacion.vista_mar%>
+                            </td>
+                            <td>
+                                <%=habitacion.tipo%>
+                            </td>
+                            <td>
+
+                                <% if (habitacion.jacuzzi) { %>
+                                    <% var s="roomjacuzzi"%>
+                                        <% } else if (habitacion.vista_mar) { %>
+                                            <% if (habitacion.tipo == 'Simple') { %>
+                                                <% var s="roomindividualmar" %>
+                                                    <% } else { %>
+                                                        <% var s="roomdoblemar" %>
+                                                            <% } %>
+                                                                <% } else{ %>
+                                                                    <% if (habitacion.simple == 'Simple') { %>
+                                                                        <% var s="roomindvidual" %>
+                                                                            <% } else { %>
+                                                                                <% var s="roomdoble" %>
+                                                                                    <% } %>
+
+                                                                                        <% } %>
+                                                                                            <img data-toggle="modal" data-target="#myModal<%= i %>" src="/imagenes/<%= s %>.jpg" alt="<%= s %>" height="100">
+                                                                                            <div id="myModal<%= i %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                                                <div class="modal-dialog">
+                                                                                                    <div class="modal-content">
+                                                                                                        <div class="modal-body">
+                                                                                                            <img src="/imagenes/<%= s %>.jpg" class="img-responsive">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+
+
+
+                            </td>
+                            <td>
+                                <%=habitacion.precio%>
+                            </td>
                             <td>
                                 <div class="form-check">
                                     <label class="form-check-label">
@@ -33,7 +75,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <%}%>
+                        <%})%>
 
                 </tbody>
             </table>
