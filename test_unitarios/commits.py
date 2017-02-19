@@ -18,4 +18,4 @@ for i in range(1,20):
  print '--------'
  os.system('git add .')
  subprocess.call(['git','commit','-m','"'+random.choice(a)+' '+aux+'"'])
- time.sleep(600)
+ time.sleep(360)
