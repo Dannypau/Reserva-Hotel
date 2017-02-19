@@ -40,13 +40,23 @@ module.exports.routes = {
     },
     '/buscar': {
         view: 'buscarHabitacion'
-    }
-    ,
+    },
     '/login': {
         view: 'login'
     },
+    '/logout':'AuthController.close',
+    '/perfil':'AuthController.perfil',
     '/registrarHuesped': {
         view: 'huesped/create'
+    },
+    '/exito': {
+        view: 'Exito'
+    },
+    '/error': {
+        view: 'Error'
+    },
+    '/registrarCliente': {
+        view: 'cliente/create'
     },
     '/hab': {
         view: 'hab'

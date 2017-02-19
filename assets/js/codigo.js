@@ -24,8 +24,10 @@ function updateInputDate(){
     var _dat = document.querySelector("#dateDefault2");
     var _dat1 = document.querySelector("#dateDefault");
     data = _dat1.value;
+    if(_dat1.value > _dat.value){
     console.log(data);
     _dat.value = data;
+        }
     _dat.min=data;
 };
 

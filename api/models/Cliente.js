@@ -11,6 +11,10 @@ module.exports = {
             type: 'string',
             required: false
         },
+        password: {
+            type: 'string',
+            required: false
+        },
         nombre_cliente: {
             type: 'string',
             required: false
