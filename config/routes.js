@@ -47,6 +47,15 @@ module.exports.routes = {
     },
     '/registrarHuesped': {
         view: 'huesped/create'
+    },
+    '/exito': {
+        view: 'Exito'
+    },
+    '/error': {
+        view: 'Error'
+    },
+    '/registrarCliente': {
+        view: 'cliente/create'
     }
 
     /***************************************************************************

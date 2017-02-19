@@ -8,13 +8,13 @@
                     <label for="dateDefault">Fecha Inicio:</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="fechaI" id="dateDefault" onchange="updateInputDate();">
+                    <input type="date" class="form-control" name="fecha_inicio" id="dateDefault" onchange="updateInputDate();">
                 </div>
                 <div class="col-sm-2">
                     <label for="dateDefault2">Fecha Fin:</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="fechaF" id="dateDefault2">
+                    <input type="date" class="form-control" name="fecha_fin" id="dateDefault2">
                 </div>
                 <div class="col-md-2">
                     <label for="sel1">Tipo de Habitación:</label>
@@ -33,21 +33,23 @@
                     <label for="huespedes">Número de huéspedes:</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" id="huespedes">
+                    <input type="number" class="form-control" id="huespedes"
+                    name="numero_huespedes"
+                    >
                 </div>
                 <div class="col-sm-2">
                     <label>Jacuzzi:</label>
                 </div>
 
                 <div class="checkbox col-sm-2">
-                    <input type="checkbox" name="checkbox1" id="checkbox1">
+                    <input type="checkbox" name="jacuzzi" id="checkbox1">
                     <label for="checkbox1" style="padding: 5px 15px 5px 51px">Jacuzzi</label>
                 </div>
                 <div class="col-sm-2">
                     <label>Vista al mar:</label>
                 </div>
                 <div class="checkbox col-sm-2">
-                    <input type="checkbox" name="checkbox2" id="checkbox2">
+                    <input type="checkbox" name="vistamar" id="checkbox2">
                     <label for="checkbox2" style="padding: 5px 15px 5px 51px">Vista al Mar</label>
                 </div>
 
@@ -63,5 +65,4 @@
 <br>
 
 <div class="container opaque1">
-Hola
-</div>
+<iframe  width="100%" height="1000px" src="/habitacion" style="size:100%"></iframe>
