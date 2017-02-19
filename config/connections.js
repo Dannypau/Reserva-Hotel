@@ -35,7 +35,7 @@ module.exports.connections = {
     adapter: 'sails-postgresql',
     url: process.env.DATABASE_URL,
     pool: true,
-    //ssl:true
+    ssl:true
   }
 
 

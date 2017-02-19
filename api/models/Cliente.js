@@ -21,7 +21,8 @@ module.exports = {
         },
         correo: {
             type: 'string',
-            required: true
+            required: true,
+            unique: true
         },
         telefono: {
             type: 'string',
