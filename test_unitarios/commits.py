@@ -7,7 +7,7 @@ import sys
 
 a=['ajustes necesarios','reformular codigo','refactorizacion','correccion de error en','bug corregido en','solucion encontrada']
 arch=['cliente.js','vista.ejs','prueba.html','habitacion.js','reserva.js','crearHabitaciones.html','ClientController.js','HabitacionController.js','ReservaController.js','HuespedController.js','Cliente.ejs','registrohuespedes.ejs']
-for i in range(1,10):
+for i in range(1,20):
  subprocess.call(['git','config','user.name',sys.argv[1]])
  subprocess.call(['git','config','user.email',sys.argv[2]])
  txt=loremipsum.Generator().generate_paragraph()[2]
