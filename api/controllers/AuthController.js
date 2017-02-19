@@ -95,8 +95,32 @@ module.exports = {
 
 
 
-    }
-
+    },
+    
+    close: function (req, res) { 
+    req.session.destroy(function(err) {
+        
+         if (err) {
+                    return res.view('Error', {
+                        error: {
+                            desripcion: "Error inesperado del servidor",
+                            rawError: errorInesperado,
+                            url: "/login"
+                        }
+                    });
+                }
+           return res.view('FinSesion', {
+                fin: {
+                    desripcion: "La sesión ha sido finalizada. Regresa pronto.",
+                    rawError: "Regrese al inicio por información.",
+                    url: "/login"
+                    }
+                            });
+                
+    
+    
+    });
+}
     //    DONE - Validar si envian parametros
 
     //    DONE - Buscar por correo al Cliente

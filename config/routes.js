@@ -44,6 +44,7 @@ module.exports.routes = {
     '/login': {
         view: 'login'
     },
+    '/logout':'AuthController.close',
     '/registrarHuesped': {
         view: 'huesped/create'
     },
