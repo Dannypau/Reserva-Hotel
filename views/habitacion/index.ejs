@@ -7,7 +7,7 @@
     0 habitacion
   </h4>
     <% } else { %>
-       
+
         <div class="table-responsive">
             <table class="table table-bordered ">
                 <thead class="opaque1">
@@ -55,23 +55,22 @@
                                 <%= item.tipo %>
                             </td>
                             <td>
-                               
                                 <% if (item.jacuzzi) { %>
                                     <% var s="roomjacuzzi"%>
                                     <% } else if (item.vista_mar) { %>
                                         <% if (item.jacuzzi == 'Simple') { %>
-                                           <% var s="roomindividualmar" %> 
+                                           <% var s="roomindividualmar" %>
                                             <% } else { %>
-                                                <% var s="roomdoblemar" %> 
+                                                <% var s="roomdoblemar" %>
                                                 <% } %>
                                                     <% } else{ %>
                                                         <% if (item.jacuzzi == 'Simple') { %>
-                                                           <% var s="roomindvidual" %> 
+                                                           <% var s="roomindvidual" %>
                                                             <% } else { %>
-                                                               <% var s="roomdoble" %> 
+                                                               <% var s="roomdoble" %>
                                                                 <% } %>
 
-                                                                    <% } %> 
+                                                                    <% } %>
                                                                   <img data-toggle="modal" data-target="#myModal<%= i %>" src= "imagenes/<%= s %>.jpg" alt="<%= s %>" height="100">
 <div id="myModal<%= i %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -89,17 +88,17 @@
                         <input type="checkbox" name="checkbox<%= i %>" id="checkbox<%= i %>">
                         <label for="checkbox<%= i %>">Aceptar</label>
                                 </div>
-                                
+
                             </td>
                         </tr>
                         <% }) %>
                 </tbody>
             </table>
         </div>
-        
+
         <% } %>
 
             <br>
             <a href="/habitacion/create">New</a>
-            
+
            </div>

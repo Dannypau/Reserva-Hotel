@@ -82,7 +82,8 @@ module.exports = {
                         return next(err);
                     }
                     return res.view('resultado', {
-                        habitaciones: disponibles
+                        habitaciones: disponibles,
+                        num_huespedes:req.param('num_huespedes')
                     });
                 })
             } else { //si no hay reservas en esas fechas
@@ -90,9 +91,10 @@ module.exports = {
                     if (err) {
                         sails.log.info('error al buscar las toditas');
                         return next(err);
-                    }
+                    }                    
                     return res.view('resultado', {
-                        habitaciones: todas
+                        habitaciones: todas,
+                        num_huespedes:req.param('num_huespedes')
                     });
                 });
             }

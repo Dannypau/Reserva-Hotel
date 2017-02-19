@@ -1,35 +1,48 @@
 <div class="container opaque1">
     <h2>Resultados:</h2>
     <br/>
-    <div class="col-md-4">
-        <button type="button" class="btn btn-primary btn-lg">Reservar</button>
-    </div>
-    <form action="#">
+    <form action="reserva/exp">
         <div class="table-responsive">
             <table class="table table-bordered ">
                 <thead class="opaque1">
-                    <th>Piso</th>
-                    <th>Jacuzzi</th>
-                    <th>Vista al mar</th>
-                    <th>Tipo</th>
-                    <th>Habitacion</th>
-                    <th>Precio</th>
-                    <th>Reservar</th>
+                    <th>
+                        <h4>Piso</h4></th>
+                    <th>
+                        <h4>Jacuzzi</h4></th>
+                    <th>
+                        <h4>Vista al mar</h4></th>
+                    <th>
+                        <h4>Tipo</h4></th>
+                    <th>
+                        <h4>Habitacion</h4></th>
+                    <th>
+                        <h4>Precio</h4></th>
+                    <th>
+                        <h4>Reservar</h4></th>
                 </thead>
                 <tbody class="opaque1">
+                    <h1><%=num_huespedes%></h1>
                     <%habitaciones.forEach((habitacion, i) => {%>
                         <tr>
-                            <td>
-                                <%=habitacion.numero_piso%>
+                            <td align="center">
+                                <h5><%=habitacion.numero_piso%></h5>
                             </td>
-                            <td>
-                                <%=habitacion.jacuzzi%>
+                            <td align="center">
+                                <%if(habitacion.jacuzzi){%>
+                                    <h5>SÍ</h5>
+                                    <%}else{%>
+                                        <h5>NO</h5>
+                                        <%}%>
                             </td>
-                            <td>
-                                <%=habitacion.vista_mar%>
+                            <td align="center">
+                                <%if(habitacion.vista_mar){%>
+                                    <h5>SÍ</h5>
+                                    <%}else{%>
+                                        <h5>NO</h5>
+                                        <%}%>
                             </td>
-                            <td>
-                                <%=habitacion.tipo%>
+                            <td align="center">
+                                <h5><%=habitacion.tipo%></h5>
                             </td>
                             <td>
 
@@ -64,13 +77,13 @@
 
 
                             </td>
-                            <td>
-                                <%=habitacion.precio%>
+                            <td align="center">
+                                <h5>$ <%=habitacion.precio%></h5>
                             </td>
                             <td>
-                                <div class="form-check">
+                                <div class="form-check" align="center">
                                     <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="exampleRadios" id="exampleRadios1" value="<%=i%>">
+                                    <input class="form-check-input" type="checkbox" name="id_hab" id="exampleRadios1" name="id_hab" value="<%=habitacion.id%>">
                                     </label>
                                 </div>
                             </td>
@@ -79,6 +92,9 @@
 
                 </tbody>
             </table>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-lg">Reservar</button>
         </div>
     </form>
     <br/>

@@ -92,6 +92,9 @@ module.exports = {
 
         })
     },
+    exp:function(req,res){
+      return res.json(req.allParams());
+    }
       /*script: function(req, res, next) {
           var id_cliente = 1,
               id_hab = [11,12,13,14,15],
