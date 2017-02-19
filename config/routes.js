@@ -47,6 +47,9 @@ module.exports.routes = {
     },
     '/registrarHuesped': {
         view: 'huesped/create'
+    },
+    '/hab': {
+        view: 'hab'
     }
 
     /***************************************************************************

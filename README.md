@@ -27,7 +27,7 @@ heroku open
 
 Acceder a la base de datos
 ```
-heroku pg:psql postgresql-rectangular-92584 --app hotel-sw2
+heroku pg:psql postgresql-colorful-98795 --app hotel-sw2
 ```
 
 
