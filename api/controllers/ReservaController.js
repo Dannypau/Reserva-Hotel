@@ -53,48 +53,59 @@ module.exports = {
             return res.redirect('/reserva');
         });
     },
-    buscar: function(req, res, next) {
+    verdisponibles: function(req, res, next) {
         Reserva.find({
-                fecha_inicio: {
-                    '>=': new Date(req.param('fecha_inicio')),
-                },
-                fecha_fin: {
-                    '<=': new Date(req.param('fecha_fin'))
+            fecha_inicio: new Date(req.param('fecha_inicio')),
+            fecha_fin: new Date(req.param('fecha_fin'))
+        }).populate('habitaciones').exec(function(err, reservas) {
+            var ocupadas = [];
+            for (var i in reservas) {
+                aux = reservas[i].ocupadas;
+                for (var j in aux) {
+                    if (aux[j].id) {
+                        ocupadas.push(aux[j].id);
+                    }
                 }
-            })
-            .populate('habitaciones')
-            .exec(function(err, habitaciones) {
+            }
+            Habitacion.find({
+                id:{'!':ocupadas
+                }
+            }).exec(function(err, disponibles) {
                 if (err) {
                     return next(err);
                 }
-                sails.log.info('regresando habitaciones');
-                sails.log.info(habitaciones);
-                return habitaciones;
-                sails.log.info('habitaciones regresadas');
-            });
+                return res.json(disponibles);
+            })
+
+        });
     },
     crear: function(req, res, next) {
         var parametros = req.allParams();
-        Habitacion.find(parametros.id_hab).exec(function(err, habitaciones) {
+        Habitacion.find(parametros.id_hab).exec(function(err, habitaciones) { //busca las habitaciones
             if (err) {
                 return next(err);
             }
             //crear la reserva
             Reserva.create({
                 id_cliente: parametros.id_cliente,
-                habitaciones: habitaciones
+                habitaciones: habitaciones,
+                fecha_reserva: parametros.fecha_reserva,
+                fecha_inicio: parametros.fecha_inicio,
+                fecha_fin: parametros.fecha_fin,
+                desayuno: parametros.desayuno,
+                costo_total: parametros.costo_total,
             }).exec(function(err, reserva) {
                 if (err) {
                     return next(err);
                 }
-                //aloja a los huespedes                                
+                //aloja a los huespedes
                 var huespedes = parametros.nombre_huesped,
                     dnis = parametros.dni;
                 for (var i in huespedes) {
                     Huesped.create({
                         nombre_huesped: huespedes[i],
                         dni: dnis[i],
-                        id_reserva: reserva.id
+                        id_reserva: reserva.id //id de la reserva
                     }).exec(function(err, huesped) {
                         if (err) {
                             return next(err);
@@ -106,5 +117,52 @@ module.exports = {
             })
 
         })
-    }
+    },
+    /*  script: function(req, res, next) {
+          var id_cliente = 1,
+              id_hab = [11,12,13,14,15],
+              fecha_reserva = new Date(),
+              fecha_inicio = '11/11/11',
+              fecha_fin = '12/12/12',
+              desayuno = true,
+              costo_total = 160,
+              nombre_huesped = ['balurdo23', 'balurdo43'],
+              dni = ['111', '222'];
+          Habitacion.find(id_hab).exec(function(err, habitaciones) { //busca las habitaciones
+              if (err) {
+                  return next(err);
+              }
+              //crear la reserva
+              Reserva.create({
+                  id_cliente: id_cliente,
+                  habitaciones: habitaciones,
+                  fecha_reserva: fecha_reserva,
+                  fecha_inicio: fecha_inicio,
+                  fecha_fin: fecha_fin,
+                  desayuno: desayuno,
+                  costo_total: costo_total,
+              }).exec(function(err, reserva) {
+                  if (err) {
+                      return next(err);
+                  }
+                  //aloja a los huespedes
+                  var huespedes = nombre_huesped,
+                      dnis = dni;
+                  for (var i in huespedes) {
+                      Huesped.create({
+                          nombre_huesped: huespedes[i],
+                          dni: dnis[i],
+                          id_reserva: reserva.id //id de la reserva
+                      }).exec(function(err, huesped) {
+                          if (err) {
+                              return next(err);
+                          }
+                          reserva.huespedes.add(huesped);
+                      })
+                  }
+                  return res.redirect('/');
+              })
+
+          })
+      }*/
 };
