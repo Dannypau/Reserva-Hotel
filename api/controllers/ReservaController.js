@@ -53,32 +53,6 @@ module.exports = {
             return res.redirect('/reserva');
         });
     },
-    verdisponibles: function(req, res, next) {
-        Reserva.find({
-            fecha_inicio: new Date(req.param('fecha_inicio')),
-            fecha_fin: new Date(req.param('fecha_fin'))
-        }).populate('habitaciones').exec(function(err, reservas) {
-            var ocupadas = [];
-            for (var i in reservas) {
-                aux = reservas[i].ocupadas;
-                for (var j in aux) {
-                    if (aux[j].id) {
-                        ocupadas.push(aux[j].id);
-                    }
-                }
-            }
-            Habitacion.find({
-                id:{'!':ocupadas
-                }
-            }).exec(function(err, disponibles) {
-                if (err) {
-                    return next(err);
-                }
-                return res.json(disponibles);
-            })
-
-        });
-    },
     crear: function(req, res, next) {
         var parametros = req.allParams();
         Habitacion.find(parametros.id_hab).exec(function(err, habitaciones) { //busca las habitaciones
