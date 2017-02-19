@@ -44,8 +44,8 @@ module.exports.routes = {
     '/login': {
         view: 'login'
     },
-    '/logout':'AuthController.close',
-    '/perfil':'AuthController.perfil',
+    '/logout': 'AuthController.close',
+    '/perfil': 'AuthController.perfil',
     '/registrarHuesped': {
         view: 'huesped/create'
     },
@@ -58,9 +58,8 @@ module.exports.routes = {
     '/registrarCliente': {
         view: 'cliente/create'
     },
-    '/hab': {
-        view: 'hab'
-    }
+    '/hab':{view:'hab'},    
+
 
     /***************************************************************************
      *                        /                                                  *

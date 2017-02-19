@@ -58,25 +58,49 @@ module.exports = {
             fecha_inicio: new Date(req.param('fecha_inicio')),
             fecha_fin: new Date(req.param('fecha_fin'))
         }).populate('habitaciones').exec(function(err, reservas) {
-            var ocupadas = [];
-            for (var i in reservas) {
-                aux = reservas[i].habitaciones;
-                for (var j in aux) {
-                    if (aux[j].id) {
-                        ocupadas.push(aux[j].id);
-                    }
-                }
+            if (err) {
+                sails.log.info('error al buscar las reservas');
+                return next(err);
             }
-            Habitacion.find({
-                id:{'!':ocupadas
-                }
-            }).exec(function(err, disponibles) {
-                if (err) {
-                    return next(err);
-                }
-                return res.json(disponibles);
-            })
-
+            if (Object.keys(reservas).length != 0) {//si hay reservas en esa fecha
+                var ocupadas = [];
+                for (var i in reservas) {
+                    aux = reservas[i].habitaciones;
+                    for (var j in aux) {
+                        if (aux[j].id) {
+                            ocupadas.push(aux[j].id);
+                        }
+                    }
+                }                
+                Habitacion.find({
+                    id: {
+                        '!': ocupadas
+                    }
+                }).exec(function(err, disponibles) {
+                    if (err) {
+                        sails.log.info('error al buscar las habitaciones');
+                        return next(err);
+                    }
+                    return res.json(disponibles);
+                })
+            } else {//si no hay reservas en esas fechas
+                Habitacion.find().exec(function(err, habitaciones) {
+                    if (err) {
+                        sails.log.info('error al buscar las toditas');
+                        return next(err);
+                    }
+                    return res.json(habitaciones);
+                });
+            }
+            //
         });
     },
+    hab: function(req, res, next) {
+        sails.log(req.param('num_huespedes'))
+        return res.view('resultado', {
+            total: req.param('num_huespedes')
+        });
+
+
+    }
 };
