@@ -55,7 +55,7 @@ module.exports = {
 
                         },
                         success: function () {
-                            req.session.credencialSegura =  true;
+                            req.session.credencialSegura = ClienteEncontrado.id;
                             return res.view('cliente/show/', {
                                 element: {
                                     dni: ClienteEncontrado.dni,
@@ -96,11 +96,39 @@ module.exports = {
 
 
     },
-    
-    close: function (req, res) { 
-    req.session.destroy(function(err) {
-        
-         if (err) {
+
+    close: function (req, res) {
+        req.session.destroy(function (err) {
+
+            if (err) {
+                return res.view('Error', {
+                    error: {
+                        desripcion: "Error inesperado del servidor",
+                        rawError: errorInesperado,
+                        url: "/login"
+                    }
+                });
+            }
+            return res.view('FinSesion', {
+                fin: {
+                    desripcion: "La sesión ha sido finalizada. Regresa pronto.",
+                    rawError: "Regrese al inicio por información.",
+                    url: "/login"
+                }
+            });
+
+
+
+        });
+    },
+
+    perfil: function (req, res) {
+
+            Cliente.findOne({
+                id: req.session.credencialSegura
+            }).exec(function (errorInesperado, ClienteEncontrado) {
+
+                if (errorInesperado) {
                     return res.view('Error', {
                         error: {
                             desripcion: "Error inesperado del servidor",
@@ -109,19 +137,34 @@ module.exports = {
                         }
                     });
                 }
-           return res.view('FinSesion', {
-                fin: {
-                    desripcion: "La sesión ha sido finalizada. Regresa pronto.",
-                    rawError: "Regrese al inicio por información.",
-                    url: "/login"
-                    }
-                            });
-                
-    
-    
-    });
-}
-    //    DONE - Validar si envian parametros
+                if (ClienteEncontrado) {
+
+                    return res.view('cliente/show/', {
+                        element: {
+                            dni: ClienteEncontrado.dni,
+                            nombre_cliente: ClienteEncontrado.nombre_cliente,
+                            correo: ClienteEncontrado.correo,
+                            telefono: ClienteEncontrado.telefono
+                        }
+                    });
+
+                } else {
+
+                    return res.view('Error', {
+                        error: {
+                            desripcion: "No se encontro al Cliente",
+                            rawError: "No existe Cliente",
+                            url: "/login"
+                        }
+                    });
+                }
+            })
+
+
+
+
+        }
+        //    DONE - Validar si envian parametros
 
     //    DONE - Buscar por correo al Cliente
 
