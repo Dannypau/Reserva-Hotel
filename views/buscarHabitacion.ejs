@@ -1,6 +1,4 @@
 
-   
-
    <div class="container opaque1">
     <div class="bd-example" data-example-id="">
         <form class="form-inline" action="/habitacion" method="post">
@@ -9,7 +7,7 @@
             <div class="row">
                 <label for="example-number-input" class="col-md-1 col-form-label" >Fecha Inicio:</label>
                 <div class="col-md-2">
-                    <input type="date" class="form-control" name="fechaI" id="dateDefault" >
+                    <input type="date" class="form-control" name="fechaI" id="dateDefault" onchange="updateInputDate();" >
                 </div>
                 <label for="example-number-input" class="col-md-1 col-form-label">Fecha Fin:</label>
                 <div class="col-md-2">

@@ -1,4 +1,4 @@
-function setInputDate(_id){
+function setInputDate(_id,sum){
     var _dat = document.querySelector(_id);
     var hoy = new Date(),
         d = hoy.getDate(),
@@ -7,7 +7,7 @@ function setInputDate(_id){
         data;
 
     if(d < 10){
-        d = "0"+d;
+        d = "0"+d+sum;
     };
     if(m < 10){
         m = "0"+m;
@@ -15,6 +15,8 @@ function setInputDate(_id){
 
     data = y+"-"+m+"-"+d;
     console.log(data);
+    _dat.min=data;
+    _dat.max= (y+1)+"-"+m+"-"+d;
     _dat.value = data;
 };
 
@@ -24,9 +26,10 @@ function updateInputDate(){
     data = _dat1.value;
     console.log(data);
     _dat.value = data;
+    _dat.min=data;
 };
 
 
 
-setInputDate("#dateDefault");
-setInputDate("#dateDefault2");
+setInputDate("#dateDefault",0);
+setInputDate("#dateDefault2",1);
