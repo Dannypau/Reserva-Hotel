@@ -40,8 +40,7 @@ module.exports.routes = {
     },
     '/buscar': {
         view: 'buscarHabitacion'
-    }
-    ,
+    },
     '/login': {
         view: 'login'
     },

@@ -62,60 +62,60 @@ module.exports = {
 
             if (parametros.nombre_cliente && parametros.correo && parametros.dni && parametros.password) {
 
-                
-                
-Passwords.encryptPassword({
-password: parametros.password,
-}).exec({
-// An unexpected error occurred.
-error: function (err) {
- if (err) {
-                        return res.view('¡Error', {
-                            error: {
-                                desripcion: "Fallo password",
-                                rawError: err,
-                                url: "/registrarCliente"
-                            }
 
-                        });
-                    }
-},
-// OK.
-success: function (result) {
- var ClienteCrear = {
-                    dni: parametros.dni,
-                    password:result,
-                    nombre_cliente: parametros.nombre_cliente,
-                    correo: parametros.correo,
-                    telefono: parametros.telefono
-                }
-    Cliente.create(ClienteCrear).exec(function (err, ClienteCreado) {
 
-                    if (err) {
-                        return res.view('Error', {
-                            error: {
-                                desripcion: "Fallo al crear el Cliente",
-                                rawError: err,
-                                url: "/registrarCliente"
-                            }
+                Passwords.encryptPassword({
+                    password: parametros.password,
+                }).exec({
+                    // An unexpected error occurred.
+                    error: function (err) {
+                        if (err) {
+                            return res.view('¡Error', {
+                                error: {
+                                    desripcion: "Fallo password",
+                                    rawError: err,
+                                    url: "/registrarCliente"
+                                }
 
-                        });
-                    }
+                            });
+                        }
+                    },
+                    // OK.
+                    success: function (result) {
+                        var ClienteCrear = {
+                            dni: parametros.dni,
+                            password: result,
+                            nombre_cliente: parametros.nombre_cliente,
+                            correo: parametros.correo,
+                            telefono: parametros.telefono
+                        }
+                        Cliente.create(ClienteCrear).exec(function (err, ClienteCreado) {
 
-                    res.view('Exito', {
-                                    exito: {
-                                        desripcion: "Registro existoso.",
-                                        rawExito: "Por favor, inicie sesión para empezar.",
-                                        url: "/login"
+                            if (err) {
+                                return res.view('Error', {
+                                    error: {
+                                        desripcion: "Fallo al crear el Cliente",
+                                        rawError: err,
+                                        url: "/registrarCliente"
                                     }
+
                                 });
+                            }
 
-                })
+                            res.view('Exito', {
+                                exito: {
+                                    desripcion: "Registro existoso.",
+                                    rawExito: "Por favor, inicie sesión para empezar.",
+                                    url: "/login"
+                                }
+                            });
 
-},
-});
-                
-//
+                        })
+
+                    },
+                });
+
+                //
             } else {
 
                 return res.view('Error', {

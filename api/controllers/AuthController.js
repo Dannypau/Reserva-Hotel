@@ -55,6 +55,7 @@ module.exports = {
 
                         },
                         success: function () {
+                            req.session.credencialSegura =  true;
                             return res.view('cliente/show/', {
                                 element: {
                                     dni: ClienteEncontrado.dni,
