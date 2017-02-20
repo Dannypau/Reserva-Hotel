@@ -1,30 +1,27 @@
 <div class="container">
-<div class="col-sm-3"></div>
-    <div class="signup-form-container col-sm-6 opaque1">
-    <h1>Perfil Personal</h1>
-    <img src="/imagenes/perfil.jpg" with="100%" alt="">
-	<p>
-		<strong>Dni:</strong>
-		<%= element.dni %>
-	</p>
-	<p>
-		<strong>Nombre:</strong>
-		<%= element.nombre_cliente %>
-	</p>
-	<p>
-		<strong>Correo:</strong>
-		<%= element.correo %>
-	</p>
-	<p>
-		<strong>Teléfono:</strong>
-		<%= element.telefono %>
-	</p>
-	
-
-<br>
-<a href="/cliente/edit/<%= element.id %>">Edit</a>
-<a href="/cliente/create">New</a>
-<a href="/cliente">Back</a>
-    </div>
     <div class="col-sm-3"></div>
-</div>
+    <div class="signup-form-container col-sm-6 opaque1">
+        <h1>Perfil Personal</h1>
+        <img src="/imagenes/perfil.jpg" with="100%" alt="">
+        <p>
+            <strong>Dni:</strong>
+            <%= element.dni %>
+        </p>
+        <p>
+            <strong>Nombre:</strong>
+            <%= element.nombre_cliente %>
+        </p>
+        <p>
+            <strong>Correo:</strong>
+            <%= element.correo %>
+        </p>
+        <p>
+            <strong>Teléfono:</strong>
+            <%= element.telefono %>
+        </p>
+
+        <div class="container"><a id="btnHomero" class="btn btn-primary" href="/reserva">Ver reservas registradas</a>
+        </div>
+        <div class="col-sm-3"></div>
+        <br>
+    </div>

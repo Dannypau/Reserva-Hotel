@@ -94,14 +94,14 @@ module.exports = {
                         id_reserva: reserva.id //id de la reserva
                     }).exec(function(err, huesped) {
                         if (err) {
-                          sails.log.info('error en lac cracion de huespedes');
+                          sails.log.info('error en lac creacion de huespedes');
                             return next(err);
                         }
                         reserva.huespedes.add(huesped);
                     })
                 }
 
-                return res.redirect('/');
+                return res.redirect('/perfil');
             })
 
         })

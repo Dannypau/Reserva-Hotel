@@ -1,4 +1,4 @@
-<h1>reserva</h1>
+<h1>Reserva</h1>
 
 
 <% if (result.length == 0) { %>
@@ -6,32 +6,23 @@
     0 reserva
   </h4>
     <% } else { %>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped">
-            <thead>
+        <div class="table-responsive" style="color:white">
+            <table class="table table-bordered ">
+                <thead class="opaque1">
                 <th>#</th>
-                <th>id</th>
-                <th>id_cliente</th>
-                <th>fecha_inicio</th>
-                <th>fecha_fin</th>
-                <th>desayuno</th>
-                <th>costo_total</th>
-                <th>id</th>
-                <th>Reservas</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Desauno</th>
+                <th>Costo Total</th>
                 <th colspan="3"></th>
             </thead>
 
-            <tbody>
+            <tbody class="opaque1">
                 <% result.forEach((item, i) => { %>
+                    <% if (item.id_cliente == session.credencialSegura) { %>
                     <tr>
                         <td>
                             <%= (i + 1) %>
-                        </td>
-                        <td>
-                            <%= item.id %>
-                        </td>
-                        <td>
-                            <%= item.id_cliente %>
                         </td>
                         <td>
                             <%= item.fecha_inicio %>
@@ -40,17 +31,16 @@
                             <%= item.fecha_fin %>
                         </td>
                         <td>
-                            <%= item.desayuno %>
+                            <% if( item.desayuno ){ %>
+                            Si
+                           <% }else{ %>
+                            No
+                           <% } %>
                         </td>
                         <td>
                             <%= item.costo_total %>
                         </td>
-                        <td>
-                            <%= item.id %>
-                        </td>
-                        <td>
-                            <%= item.reservas %>
-                        </td>
+                       
 
                         <td>
                             <a href="/reserva/show/<%= item.id %>">Show</a>
@@ -58,10 +48,8 @@
                         <td>
                             <a href="/reserva/delete/<%= item.id %>">Delete</a>
                         </td>
-                        <td>
-                            <a href="/reserva/edit/<%= item.id %>">Edit</a>
-                        </td>
                     </tr>
+                     <% } %>
                     <% }) %>
             </tbody>
         </table>
@@ -69,4 +57,3 @@
         <% } %>
 
             <br>
-            <a href="/reserva/create">New</a>

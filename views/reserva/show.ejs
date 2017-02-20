@@ -1,32 +1,29 @@
-<h1>Show reserva</h1>
 
+<div class="container opaque1">
+
+<h1>Reserva</h1>
 	<p>
-		<strong>id_cliente:</strong>
-		<%= element.id_cliente %>
-	</p>
-	<p>
-		<strong>fecha_inicio:</strong>
+		<strong>Fecha Inicio:</strong>
 		<%= element.fecha_inicio %>
 	</p>
 	<p>
-		<strong>fecha_fin:</strong>
+		<strong>Fecha Fin:</strong>
 		<%= element.fecha_fin %>
 	</p>
 	<p>
-		<strong>desayuno:</strong>
-		<%= element.desayuno %>
+		<strong>Desayuno:</strong>
+		<% if( element.desayuno ){ %>
+                            Si
+                           <% }else{ %>
+                            No
+                           <% } %>
 	</p>
 	<p>
-		<strong>costo_total:</strong>
+		<strong>Costo Total:</strong>
 		<%= element.costo_total %>
 	</p>
-	<p>
-		<strong>id:</strong>
-		<%= element.id %>
-	</p>
-	
+<div class="container"><a id="btnHomero" class="btn btn-primary" href="/reserva">Atrás</a>
+        </div>
+	<br>
+</div>
 
-<br>
-<a href="/reserva/edit/<%= element.id %>">Edit</a>
-<a href="/reserva/create">New</a>
-<a href="/reserva">Back</a>
