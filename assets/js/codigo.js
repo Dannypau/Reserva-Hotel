@@ -43,8 +43,25 @@ function updateInputDate(){
         }
     _dat.min=data;
 };
+/*
+function handleChange(checkbox) {
+    var 
+    var label="total"+checkbox.id.substr(8);
+    if(checkbox.checked == true){
+        total=total+Number(document.getElementById(label).innerHTML);
+    }else{
+        total=total-Number(document.getElementById(label).innerHTML);
+   }
+    console.log(total);
+}
+*/
 
-
-
+function handleChange(checkbox) {
+    if(checkbox.checked == true){
+        document.getElementById("total").innerHTML=Number(document.getElementById("total").innerHTML)+(10*Number(document.getElementById("numeroHuespedes").innerHTML));
+    }else{
+        document.getElementById("total").innerHTML=Number(document.getElementById("total").innerHTML)-(10*Number(document.getElementById("numeroHuespedes").innerHTML));
+   }
+}
 setInputDate("#dateDefault",0);
 setInputDate("#dateDefault2",1);

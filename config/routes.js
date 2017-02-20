@@ -58,7 +58,10 @@ module.exports.routes = {
     '/registrarCliente': {
         view: 'cliente/create'
     },
-    '/hab':{view:'hab'},    
+    '/hab':{view:'hab'}, 
+    '/resumenReserva': {
+        view: 'ResumenReserva'
+    },   
 
 
     /***************************************************************************
