@@ -119,7 +119,7 @@ module.exports = {
     },
     finalizar:function(req,res){
       var parametros = req.allParams();
-      return res.view('reserva/finregistro', {
+      return res.view('reserva/ResumenReserva', {
           num_huespedes: parametros.num_huespedes,
           id_hab: parametros.id_hab,
           total_dias: parametros.total_dias,
