@@ -7,13 +7,13 @@ function setInputDate(_id,sum){
         data;
 
     if(d < 10){
-        d = "0"+d+sum;
+        d = "0"+d;
     };
     if(m < 10){
         m = "0"+m;
     };
 
-    data = y+"-"+m+"-"+d;
+    data = y+"-"+m+"-"+(d+sum);
     console.log(data);
     _dat.min=data;
     _dat.max= (y+1)+"-"+m+"-"+d;
@@ -23,7 +23,20 @@ function setInputDate(_id,sum){
 function updateInputDate(){
     var _dat = document.querySelector("#dateDefault2");
     var _dat1 = document.querySelector("#dateDefault");
-    data = _dat1.value;
+    var hoy = new Date(_dat1.value),
+        d = hoy.getDate(),
+        m = hoy.getMonth()+1, 
+        y = hoy.getFullYear(),
+        data;
+    console.log(hoy);
+    if(d < 10){
+        d = "0"+d;
+    };
+    if(m < 10){
+        m = "0"+m;
+    };
+
+    data = y+"-"+m+"-"+(d+2);
     if(_dat1.value > _dat.value){
     console.log(data);
     _dat.value = data;
