@@ -2,7 +2,7 @@ function setInputDate(_id,sum){
     var _dat = document.querySelector(_id);
     var hoy = new Date(),
         d = hoy.getDate(),
-        m = hoy.getMonth()+1, 
+        m = hoy.getMonth()+1,
         y = hoy.getFullYear(),
         data;
 
@@ -25,7 +25,7 @@ function updateInputDate(){
     var _dat1 = document.querySelector("#dateDefault");
     var hoy = new Date(_dat1.value),
         d = hoy.getDate(),
-        m = hoy.getMonth()+1, 
+        m = hoy.getMonth()+1,
         y = hoy.getFullYear(),
         data;
     console.log(hoy);
@@ -45,7 +45,7 @@ function updateInputDate(){
 };
 /*
 function handleChange(checkbox) {
-    var 
+    var
     var label="total"+checkbox.id.substr(8);
     if(checkbox.checked == true){
         total=total+Number(document.getElementById(label).innerHTML);
