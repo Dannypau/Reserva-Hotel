@@ -93,6 +93,7 @@ module.exports = {
 
         })
     },
+    //me manda a la vista de registrar huespedes
     registrarhuespedes: function(req, res) {
         var parametros = req.allParams();
         Habitacion.find({
@@ -105,7 +106,7 @@ module.exports = {
             for (var i in habitaciones) {
                 total += habitaciones[i].precio * parametros.total_dias;
             }
-            sails.log(total);
+            sails.log(habitaciones.length);
             return res.view('huesped/create', {
                 num_huespedes: parametros.num_huespedes,
                 id_hab: parametros.id_hab,
@@ -115,6 +116,17 @@ module.exports = {
                 costo_total: total
             });
         });
+    },
+    finalizar:function(req,res){
+      var parametros = req.allParams();
+      return res.view('reserva/finregistro', {
+          num_huespedes: parametros.num_huespedes,
+          id_hab: parametros.id_hab,
+          total_dias: parametros.total_dias,
+          fecha_inicio: parametros.fecha_inicio,
+          fecha_fin: parametros.fecha_fin,
+          costo_total: parametros.costo_total
+      });
     }
     /*script: function(req, res, next) {
         var id_cliente = 1,
