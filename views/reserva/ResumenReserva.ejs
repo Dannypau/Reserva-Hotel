@@ -5,14 +5,6 @@
     <form>
         <div class="row">
             <div class="col-sm-2"></div>
-            <div class="col-sm-4">Número de Huéspedes:</div>
-            <div class="col-sm-4" id="numeroHuespedes">
-                <%= num_huespedes%>
-            </div>
-            <div class="col-sm-2"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2"></div>
             <div class="col-sm-4">Fecha de entrada:</div>
             <div class="col-sm-4">
                 <%= fecha_inicio%>
@@ -28,22 +20,43 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
+
         <div class="row">
             <div class="col-sm-2"></div>
-            <div class="col-sm-4">Desayuno:</div>
+            <div class="col-sm-4">Días:</div>
+            <div class="col-sm-4" id="numeroDias">
+                <%= total_dias%>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">Total Habitaciones:</div>
+            <div class="col-sm-4" >
+                <%= id_hab.length%>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">Número de Huéspedes:</div>
+            <div class="col-sm-4" id="numeroHuespedes">
+                <%= num_huespedes%>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">Desea desayuno?</div>
             <div class="form-check col-sm-4">
                 <input class="form-check-input" type="checkbox" name="desayuno" id="desayuno" onchange='handleChange(this);'>
             </div>
             <div class="col-sm-2"></div>
         </div>
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-4">Habitaciones:</div>
-            <div class="col-sm-4">
-                <%= id_hab.length%>
-            </div>
-            <div class="col-sm-2"></div>
-        </div>
+
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Total:</div>
