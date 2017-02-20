@@ -1,4 +1,9 @@
-<div class="container opaque1">
+<% if (!session.credencialSegura) { %>
+    <script>
+        window.location.href = "/"
+    </script>
+    <% } %>
+   <div class="container opaque1">
     <h1> Resumen Reserva </h1>
     <h3>Poner un mensaje para que revisen si es lo que en verdad quieren </h3>
     <h3>Detalles</h3>
@@ -6,8 +11,8 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Fecha de entrada:</div>
-            <div class="col-sm-4">
-                <%= fecha_inicio%>
+            <div class="col-sm-4" >
+                <label id="fechaInicio"><%= fecha_inicio %></label>
             </div>
             <div class="col-sm-2"></div>
             <input type="hidden" name="fecha_inicio" value="<%= fecha_inicio %>">
@@ -16,8 +21,8 @@
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Fecha de salida:</div>
-            <div class="col-sm-4">
-                <%= fecha_fin%>
+            <div class="col-sm-4" >
+                <label id="fechaFin"><%= fecha_fin %></label>
             </div>
             <div class="col-sm-2"></div>
             <input type="hidden" name="fecha_fin" value="<%= fecha_fin %>">

@@ -19,22 +19,22 @@
 
 module.exports.policies = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions (`true` allows public     *
-  * access)                                                                  *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Default policy for all controllers and actions (`true` allows public     *
+     * access)                                                                  *
+     *                                                                          *
+     ***************************************************************************/
 
-  // '*': true,
+    // '*': true,
 
-  /***************************************************************************
-  *                                                                          *
-  * Here's an example of mapping some policies to run before a controller    *
-  * and its actions                                                          *
-  *                                                                          *
-  ***************************************************************************/
-	ClienteController: {
+    /***************************************************************************
+     *                                                                          *
+     * Here's an example of mapping some policies to run before a controller    *
+     * and its actions                                                          *
+     *                                                                          *
+     ***************************************************************************/
+    ClienteController: {
 
         index: true,
         show: ['autenticado'],
@@ -43,5 +43,39 @@ module.exports.policies = {
         delete: ['autenticado'],
         crearCliente: true
 
+    },
+    HabitacionController: {
+
+        index: true,
+        show: ['autenticado'],
+        edit: ['autenticado'],
+        update: ['autenticado'],
+        delete: false,
+        verdisponibles: true
+
+    },
+    HuespedController: {
+
+        index: ['autenticado'],
+        show: ['autenticado'],
+        edit: ['autenticado'],
+        update: ['autenticado'],
+        delete: ['autenticado'],
+        verdisponibles:['autenticado']
+
+    },
+    ReservaController: {
+
+        index: ['autenticado'],
+        show: ['autenticado'],
+        edit: ['autenticado'],
+        update: ['autenticado'],
+        delete: ['autenticado'],
+        verdisponibles: ['autenticado'],
+        crear: ['autenticado'],
+        registrarhuespedes: ['autenticado'],
+        finalizar: ['autenticado']
+
     }
+
 };

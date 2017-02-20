@@ -57,10 +57,15 @@ function handleChange(checkbox) {
 */
 
 function handleChange(checkbox) {
+    var fechaFin = new Date(document.getElementById("fechaFin").innerHTML);
+    var fechaInicio =new Date(document.getElementById("fechaInicio").innerHTML);
+    
+    var diferenciaDias= Math.floor((fechaFin - fechaInicio)/(1000*60*60*24));
+    console.log(diferenciaDias);
     if(checkbox.checked == true){
-        document.getElementById("total").innerHTML=Number(document.getElementById("total").innerHTML)+(10*Number(document.getElementById("numeroHuespedes").innerHTML));
+        document.getElementById("total").innerHTML=Number(document.getElementById("total").innerHTML)+(diferenciaDias*10*Number(document.getElementById("numeroHuespedes").innerHTML));
     }else{
-        document.getElementById("total").innerHTML=Number(document.getElementById("total").innerHTML)-(10*Number(document.getElementById("numeroHuespedes").innerHTML));
+        document.getElementById("total").innerHTML=Number(document.getElementById("total").innerHTML)-(diferenciaDias*10*Number(document.getElementById("numeroHuespedes").innerHTML));
    }
 }
 setInputDate("#dateDefault",0);
