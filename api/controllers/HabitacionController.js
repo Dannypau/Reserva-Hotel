@@ -54,9 +54,10 @@ module.exports = {
         });
     },
     verdisponibles: function(req, res, next) {
+      var parametros=req.allParams();
         Reserva.find({
-            fecha_inicio: new Date(req.param('fecha_inicio')),
-            fecha_fin: new Date(req.param('fecha_fin'))
+            fecha_inicio: new Date(parametros.fecha_inicio),
+            fecha_fin: new Date(parametros.fecha_fin)
         }).populate('habitaciones').exec(function(err, reservas) {
             if (err) {
                 sails.log.info('error al buscar las reservas');
@@ -83,7 +84,8 @@ module.exports = {
                     }
                     return res.view('resultado', {
                         habitaciones: disponibles,
-                        num_huespedes:req.param('num_huespedes')
+                        num_huespedes:parametros.num_huespedes,
+
                     });
                 })
             } else { //si no hay reservas en esas fechas
@@ -91,10 +93,12 @@ module.exports = {
                     if (err) {
                         sails.log.info('error al buscar las toditas');
                         return next(err);
-                    }                    
+                    }
                     return res.view('resultado', {
                         habitaciones: todas,
-                        num_huespedes:req.param('num_huespedes')
+                        num_huespedes:parametros.num_huespedes,
+                        fecha_inicio:parametros.fecha_inicio,
+                        fecha_fin:parametros.fecha_fin
                     });
                 });
             }
@@ -102,10 +106,12 @@ module.exports = {
         });
     },
     hab: function(req, res, next) {
+
         return res.view('resultado', {
-            total: req.param('num_huespedes')
+            total: parametros.num_huespedes,
+            fecha_inicio:parametros.fecha_inicio,
+            fecha_fin:parametros.fecha_fin            
         });
-
-
+        //return res.json(req.allParams());
     }
 };
