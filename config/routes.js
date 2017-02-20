@@ -39,7 +39,7 @@ module.exports.routes = {
         view: 'vista'
     },
     '/buscar': {
-        view: 'buscarHabitacion'
+        view: 'habitacion/buscarhabitaciones'
     },
     '/login': {
         view: 'login'
@@ -58,10 +58,6 @@ module.exports.routes = {
     '/registrarCliente': {
         view: 'cliente/create'
     },
-    '/hab':{view:'hab'}, 
-    '/resumenReserva': {
-        view: 'ResumenReserva'
-    },   
 
 
     /***************************************************************************

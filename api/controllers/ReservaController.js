@@ -107,7 +107,7 @@ module.exports = {
                 total += habitaciones[i].precio * parametros.total_dias;
             }
             sails.log(habitaciones.length);
-            return res.view('huesped/create', {
+            return res.view('huesped/registrohuespedes', {
                 num_huespedes: parametros.num_huespedes,
                 id_hab: parametros.id_hab,
                 total_dias: parametros.total_dias,

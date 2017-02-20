@@ -82,7 +82,7 @@ module.exports = {
                         sails.log.info('error al buscar las habitaciones');
                         return next(err);
                     }
-                    return res.view('resultado', {
+                    return res.view('reserva/resultado', {
                         habitaciones: disponibles,
                         num_huespedes:parametros.num_huespedes,
 
@@ -94,7 +94,7 @@ module.exports = {
                         sails.log.info('error al buscar las toditas');
                         return next(err);
                     }
-                    return res.view('resultado', {
+                    return res.view('reserva/resultado', {
                         habitaciones: todas,
                         num_huespedes:parametros.num_huespedes,
                         fecha_inicio:parametros.fecha_inicio,
@@ -104,14 +104,5 @@ module.exports = {
             }
             //
         });
-    },
-    hab: function(req, res, next) {
-
-        return res.view('resultado', {
-            total: parametros.num_huespedes,
-            fecha_inicio:parametros.fecha_inicio,
-            fecha_fin:parametros.fecha_fin            
-        });
-        //return res.json(req.allParams());
     }
 };
