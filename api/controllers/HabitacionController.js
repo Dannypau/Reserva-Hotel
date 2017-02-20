@@ -54,15 +54,16 @@ module.exports = {
         });
     },
     verdisponibles: function(req, res, next) {
-      var parametros=req.allParams();
+        var parametros = req.allParams();
         Reserva.find({
-            fecha_inicio: new Date(parametros.fecha_inicio),
-            fecha_fin: new Date(parametros.fecha_fin)
+            fecha_inicio: parametros.fecha_inicio,
+            fecha_fin: parametros.fecha_fin
+
         }).populate('habitaciones').exec(function(err, reservas) {
             if (err) {
                 sails.log.info('error al buscar las reservas');
                 return next(err);
-            }
+            }            
             if (Object.keys(reservas).length != 0) { //si hay reservas en esa fecha
                 var ocupadas = [];
                 for (var i in reservas) {
@@ -82,10 +83,12 @@ module.exports = {
                         sails.log.info('error al buscar las habitaciones');
                         return next(err);
                     }
+                    sails.log.info('habitaciones filtradas');
                     return res.view('reserva/resultado', {
                         habitaciones: disponibles,
-                        num_huespedes:parametros.num_huespedes,
-
+                        num_huespedes: parametros.num_huespedes,
+                        fecha_inicio: parametros.fecha_inicio,
+                        fecha_fin: parametros.fecha_fin
                     });
                 })
             } else { //si no hay reservas en esas fechas
@@ -94,11 +97,12 @@ module.exports = {
                         sails.log.info('error al buscar las toditas');
                         return next(err);
                     }
+                    sails.log.info('todas las habitaciones');
                     return res.view('reserva/resultado', {
                         habitaciones: todas,
-                        num_huespedes:parametros.num_huespedes,
-                        fecha_inicio:parametros.fecha_inicio,
-                        fecha_fin:parametros.fecha_fin
+                        num_huespedes: parametros.num_huespedes,
+                        fecha_inicio: parametros.fecha_inicio,
+                        fecha_fin: parametros.fecha_fin
                     });
                 });
             }

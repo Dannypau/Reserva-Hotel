@@ -2,7 +2,7 @@
     <h1> Resumen Reserva </h1>
     <h3>Poner un mensaje para que revisen si es lo que en verdad quieren </h3>
     <h3>Detalles</h3>
-    <form>
+    <form action="/reserva/crear">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Fecha de entrada:</div>
@@ -10,6 +10,7 @@
                 <%= fecha_inicio%>
             </div>
             <div class="col-sm-2"></div>
+            <input type="hidden" name="fecha_inicio" value="<%= fecha_inicio %>">
         </div>
 
         <div class="row">
@@ -19,6 +20,7 @@
                 <%= fecha_fin%>
             </div>
             <div class="col-sm-2"></div>
+            <input type="hidden" name="fecha_fin" value="<%= fecha_fin %>">
         </div>
 
         <div class="row">
@@ -28,15 +30,18 @@
                 <%= total_dias%>
             </div>
             <div class="col-sm-2"></div>
+            <!-- borrar esta caca  -->
+            <input type="hidden" name="id_cliente" value="<%= 1 %>">
         </div>
 
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Total Habitaciones:</div>
-            <div class="col-sm-4" >
-                <%= id_hab.length%>
+            <div class="col-sm-4">
+                <%= id_hab.length   %>
             </div>
             <div class="col-sm-2"></div>
+            <input type="hidden" name="id_hab" value="<%= id_hab %>">
         </div>
 
         <div class="row">
@@ -46,6 +51,8 @@
                 <%= num_huespedes%>
             </div>
             <div class="col-sm-2"></div>
+            <input type="hidden" name="nombre_huesped" value="<%= nombre_huesped %>">
+            <input type="hidden" name="dni" value="<%= dni %>">
         </div>
 
         <div class="row">
@@ -63,6 +70,8 @@
             <div class="col-sm-4" id="total">
                 <%= costo_total%>
             </div>
+            <input type="hidden" name="costo_total" value="<%= costo_total %>">
+            <input type="hidden" name="total_dias" value="<%= total_dias %>">
             <div class="col-sm-2"></div>
         </div>
         <br>

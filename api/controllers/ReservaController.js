@@ -55,21 +55,33 @@ module.exports = {
     },
     crear: function(req, res, next) {
         var parametros = req.allParams();
+        //casting de los parametros
+        parametros.nombre_huesped = parametros.nombre_huesped.split(",");
+        parametros.dni = parametros.dni.split(",")
+        parametros.id_hab = parametros.id_hab.split(",")
+        if (req.param('desayuno')) {
+            parametros.desayuno = true;
+            parametros.costo_total = Number(parametros.costo_total) + 10 * parametros.total_dias * parametros.nombre_huesped.length;
+        }
+        //busqueda habitaciones
         Habitacion.find(parametros.id_hab).exec(function(err, habitaciones) { //busca las habitaciones
             if (err) {
+              sails.log.info('error en la busqueda de habitaciones');
                 return next(err);
             }
             //crear la reserva
+
             Reserva.create({
                 id_cliente: parametros.id_cliente,
                 habitaciones: habitaciones,
                 fecha_reserva: new Date(),
-                fecha_inicio: parametros.fecha_inicio,
-                fecha_fin: parametros.fecha_fin,
+                fecha_inicio: new Date(parametros.fecha_inicio),
+                fecha_fin: new Date(parametros.fecha_fin),
                 desayuno: parametros.desayuno,
                 costo_total: parametros.costo_total,
             }).exec(function(err, reserva) {
                 if (err) {
+                  sails.log.info('error en la creacion de reservas');
                     return next(err);
                 }
                 //aloja a los huespedes
@@ -82,6 +94,7 @@ module.exports = {
                         id_reserva: reserva.id //id de la reserva
                     }).exec(function(err, huesped) {
                         if (err) {
+                          sails.log.info('error en lac cracion de huespedes');
                             return next(err);
                         }
                         reserva.huespedes.add(huesped);
@@ -105,7 +118,7 @@ module.exports = {
             var total = 0;
             for (var i in habitaciones) {
                 total += habitaciones[i].precio * parametros.total_dias;
-            }            
+            }
             return res.view('huesped/registrohuespedes', {
                 num_huespedes: parametros.num_huespedes,
                 id_hab: parametros.id_hab,
@@ -116,17 +129,30 @@ module.exports = {
             });
         });
     },
-    finalizar:function(req,res){
-      var parametros = req.allParams();
-      return res.view('reserva/ResumenReserva', {
-          num_huespedes: parametros.num_huespedes,
-          id_hab: parametros.id_hab,
-          total_dias: parametros.total_dias,
-          fecha_inicio: parametros.fecha_inicio,
-          fecha_fin: parametros.fecha_fin,
-          costo_total: parametros.costo_total
-      });
+    finalizar: function(req, res) {
+        var parametros = req.allParams();
+        return res.view('reserva/ResumenReserva', {
+            num_huespedes: parametros.num_huespedes,
+            id_hab: parametros.id_hab,
+            total_dias: parametros.total_dias,
+            fecha_inicio: parametros.fecha_inicio,
+            fecha_fin: parametros.fecha_fin,
+            nombre_huesped: parametros.nombre_huesped,
+            dni: parametros.dni,
+            costo_total: parametros.costo_total
+        });
+    },
+    probar: function(req, res) {
+        parametros = req.allParams();
+        parametros.nombre_huesped = parametros.nombre_huesped.split(",");
+        parametros.dni = parametros.dni.split(",")
+        if (req.param('desayuno')) {
+            parametros.desayuno = true;
+            parametros.costo_total = Number(parametros.costo_total) + 10 * parametros.total_dias * parametros.nombre_huesped.length;
+        }
+        return res.json(parametros);
     }
+
     /*script: function(req, res, next) {
         var id_cliente = 1,
             id_hab = [11,12,13,14,15],
