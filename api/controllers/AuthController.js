@@ -56,6 +56,19 @@ module.exports = {
                         },
                         success: function () {
                             req.session.credencialSegura = ClienteEncontrado.id;
+                            console.log(parametros.fecha_inicio && parametros.fecha_fin && parametros.id_hab && parametros.nombre_huesped && parametros.costo_total && parametros.total_dias);
+                            if (parametros.fecha_inicio && parametros.fecha_fin && parametros.id_hab && parametros.nombre_huesped && parametros.costo_total && parametros.total_dias) {
+                                return res.view('reserva/finalizar/', {
+                                    fecha_inicio: parametros.fecha_inicio,
+                                    fecha_fin: parametros.fecha_fin,
+                                    id_hab: parametros.id_hab,
+                                    nombre_huesped: parametros.nombre_huesped,
+                                    dni: parametros.dni,
+                                    costo_total: parametros.costo_total,
+                                    total_dias: parametros.total_dias
+                                });
+                            }
+                            else{
                             return res.view('cliente/show/', {
                                 element: {
                                     dni: ClienteEncontrado.dni,
@@ -64,6 +77,7 @@ module.exports = {
                                     telefono: ClienteEncontrado.telefono
                                 }
                             });
+                            }
                         },
                     });
 

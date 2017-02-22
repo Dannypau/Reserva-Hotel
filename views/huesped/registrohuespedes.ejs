@@ -1,14 +1,16 @@
-<% if (!session.credencialSegura) { %>
-    <script>
-        alert("Debe estar logueado para realizar una reserva");
-        window.location.href = "/login"
-    </script>
-    <% } %>
    <div class="container">
     <div class="col-sm-3"></div>
     <div class="signup-form-container col-sm-6 opaque1">
 
-        <form role="form" id="register-form" autocomplete="off" action="/reserva/finalizar" method="post">
+        <form role="form" id="register-form" autocomplete="off" action="
+           
+           <% if (session.credencialSegura) { %>
+       /reserva/finalizar
+    <% } else { %>
+           /login
+           <% } %>
+           
+           " method="post">
             <div class="form-header">
                 <h3 class="form-title"><i class="fa fa-user"></i>Registrar Huésped(es)</h3>
             </div>

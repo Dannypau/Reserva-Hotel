@@ -1,8 +1,4 @@
-<% if (session.credencialSegura) { %>
-    <script>
-        window.location.href = "/"
-    </script>
-    <% } %>
+
         <div class="container">
             <div class="row ">
 
@@ -21,6 +17,32 @@
                         </div>
                         <button type="submit" class="btn btn-block btn-success">Entrar</button>
                         <br>
+                        
+                        <% if (typeof fecha_inicio  != 'undefined') { %>
+        < input type = "hidden"
+        name = "fecha_inicio"
+        value = "<%= fecha_inicio %>" >
+            < input type = "hidden"
+        name = "fecha_fin"
+        value = "<%= fecha_fin %>" >
+            < input type = "hidden"
+        name = "id_cliente"
+        value = "<%= session.credencialSegura %>" >
+            < input type = "hidden"
+        name = "id_hab"
+        value = "<%= id_hab %>" >
+            < input type = "hidden"
+        name = "nombre_huesped"
+        value = "<%= nombre_huesped %>" >
+            < input type = "hidden"
+        name = "costo_total"
+        value = "<%= costo_total %>" >
+            < input type = "hidden"
+        name = "total_dias"
+        value = "<%= total_dias %>" >
+    <% } %>
+                        
+                        
                     </form>
                 </div>
 

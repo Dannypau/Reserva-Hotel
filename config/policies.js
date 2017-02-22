@@ -73,7 +73,7 @@ module.exports.policies = {
         delete: ['autenticado'],
         verdisponibles: ['autenticado'],
         crear: ['autenticado'],
-        registrarhuespedes: ['autenticado'],
+        registrarhuespedes: true,
         finalizar: ['autenticado']
 
     }
