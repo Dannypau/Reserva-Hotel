@@ -59,7 +59,7 @@
   Validator.DEFAULTS = {
     delay: 500,
     html: false,
-    disable: true,
+    disable: false,
     focus: true,
     custom: {},
     errors: {
@@ -285,7 +285,14 @@
 
   Validator.prototype.onSubmit = function (e) {
     this.validate()
-    if (this.isIncomplete() || this.hasErrors()) e.preventDefault()
+    if (this.isIncomplete() || this.hasErrors()){
+        e.preventDefault(); 
+        swal(
+  'Oops...',
+  'Ingrese todos los campos requeridos*.',
+  'error'
+)
+    } 
   }
 
   Validator.prototype.toggleSubmit = function () {
