@@ -12,52 +12,46 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Fecha de entrada:</div>
             <div class="col-sm-4" >
-                <label id="fechaInicio"><%= fecha_inicio %></label>
+                <label id="fechaInicio"><%= req.session.fecha_inicio %></label>
             </div>
             <div class="col-sm-2"></div>
-            <input type="hidden" name="fecha_inicio" value="<%= fecha_inicio %>">
         </div>
 
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Fecha de salida:</div>
             <div class="col-sm-4" >
-                <label id="fechaFin"><%= fecha_fin %></label>
+                <label id="fechaFin"><%= req.session.fecha_fin %></label>
             </div>
             <div class="col-sm-2"></div>
-            <input type="hidden" name="fecha_fin" value="<%= fecha_fin %>">
         </div>
 
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Días:</div>
             <div class="col-sm-4" id="numeroDias">
-                <%= total_dias%>
+                <%= req.session.total_dias%>
             </div>
             <div class="col-sm-2"></div>
             <!-- borrar esta caca  -->
-            <input type="hidden" name="id_cliente" value="<%= session.credencialSegura %>">
         </div>
 
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Total Habitaciones:</div>
             <div class="col-sm-4">
-                <%= id_hab.length   %>
+                <%= req.session.id_hab.length   %>
             </div>
             <div class="col-sm-2"></div>
-            <input type="hidden" name="id_hab" value="<%= id_hab %>">
         </div>
 
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Número de Huéspedes:</div>
             <div class="col-sm-4" id="numeroHuespedes">
-                <%= num_huespedes%>
+                <%= req.session.num_huespedes%>
             </div>
             <div class="col-sm-2"></div>
-            <input type="hidden" name="nombre_huesped" value="<%= nombre_huesped %>">
-            <input type="hidden" name="dni" value="<%= dni %>">
         </div>
 
         <div class="row">
@@ -73,10 +67,8 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-4">Total:</div>
             <div class="col-sm-4" id="total">
-                <%= costo_total%>
+                <%= req.session.costo_total%>
             </div>
-            <input type="hidden" name="costo_total" value="<%= costo_total %>">
-            <input type="hidden" name="total_dias" value="<%= total_dias %>">
             <div class="col-sm-2"></div>
         </div>
         <br>

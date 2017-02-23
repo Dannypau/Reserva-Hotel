@@ -54,17 +54,12 @@ module.exports = {
         });
     },
     crear: function(req, res, next) {
-        var parametros = req.allParams();
-        //casting de los parametros
-        parametros.nombre_huesped = parametros.nombre_huesped.split(",");
-        parametros.dni = parametros.dni.split(",")
-        parametros.id_hab = parametros.id_hab.split(",")
         if (req.param('desayuno')) {
-            parametros.desayuno = true;
-            parametros.costo_total = Number(parametros.costo_total) + 10 * parametros.total_dias * parametros.nombre_huesped.length;
+            desayuno = true;
+            req.session.costo_total = Number(req.session.costo_total) + 10 * req.session.total_dias * req.session.nombre_huesped.length;
         }
         //busqueda habitaciones
-        Habitacion.find(parametros.id_hab).exec(function(err, habitaciones) { //busca las habitaciones
+        Habitacion.find(req.session.id_hab).exec(function(err, habitaciones) { //busca las habitaciones
             if (err) {
               sails.log.info('error en la busqueda de habitaciones');
                 return next(err);
@@ -72,21 +67,24 @@ module.exports = {
             //crear la reserva
 
             Reserva.create({
-                id_cliente: parametros.id_cliente,
+                id_cliente: req.session.credencialSegura,
                 habitaciones: habitaciones,
                 fecha_reserva: new Date(),
-                fecha_inicio: new Date(parametros.fecha_inicio),
-                fecha_fin: new Date(parametros.fecha_fin),
-                desayuno: parametros.desayuno,
-                costo_total: parametros.costo_total,
+                fecha_inicio: req.session.fecha_inicio,
+                fecha_fin: req.session.fecha_fin,
+                desayuno: req.session.desayuno,
+                costo_total: req.session.costo_total,
             }).exec(function(err, reserva) {
                 if (err) {
                   sails.log.info('error en la creacion de reservas');
                     return next(err);
                 }
                 //aloja a los huespedes
-                var huespedes = parametros.nombre_huesped,
-                    dnis = parametros.dni;
+                sails.log(new Date());
+                sails.log(req.session.fecha_inicio);
+                sails.log(req.session.fecha_fin);
+                var huespedes = req.session.nombre_huesped,
+                    dnis = req.session.dni;
                 for (var i in huespedes) {
                     Huesped.create({
                         nombre_huesped: huespedes[i],
@@ -119,38 +117,41 @@ module.exports = {
             for (var i in habitaciones) {
                 total += habitaciones[i].precio * parametros.total_dias;
             }
-            return res.view('huesped/registrohuespedes', {
-                num_huespedes: parametros.num_huespedes,
-                id_hab: parametros.id_hab,
-                total_dias: parametros.total_dias,
-                fecha_inicio: parametros.fecha_inicio,
-                fecha_fin: parametros.fecha_fin,
-                costo_total: total
-            });
+            req.session.id_hab=parametros.id_hab;
+            req.session.total_dias=parametros.total_dias;
+            req.session.costo_total=total;
+            return res.view('huesped/registrohuespedes');
         });
     },
     finalizar: function(req, res) {
         var parametros = req.allParams();
-        return res.view('reserva/ResumenReserva', {
-            num_huespedes: parametros.num_huespedes,
-            id_hab: parametros.id_hab,
-            total_dias: parametros.total_dias,
-            fecha_inicio: parametros.fecha_inicio,
-            fecha_fin: parametros.fecha_fin,
-            nombre_huesped: parametros.nombre_huesped,
-            dni: parametros.dni,
-            costo_total: parametros.costo_total
-        });
+        req.session.nombre_huesped= parametros.nombre_huesped;
+        req.session.dni= parametros.dni;
+        return res.view('reserva/ResumenReserva');
     },
     probar: function(req, res) {
         parametros = req.allParams();
-        parametros.nombre_huesped = parametros.nombre_huesped.split(",");
-        parametros.dni = parametros.dni.split(",")
         if (req.param('desayuno')) {
-            parametros.desayuno = true;
-            parametros.costo_total = Number(parametros.costo_total) + 10 * parametros.total_dias * parametros.nombre_huesped.length;
+            req.session.desayuno = true;
+            req.session.costo_total = Number(req.session.costo_total) + 10 * req.session.total_dias * req.session.nombre_huesped.length;
         }
-        return res.json(parametros);
+        todo={
+          nombre_huesped : req.session.nombre_huesped,
+          dni : req.session.dni,
+          id_hab : req.session.id_hab,
+          desayuno:req.session.desayuno,
+          costo_total:req.session.costo_total,
+          fecha_inicio: req.session.fecha_inicio,
+          fecha_fin: req.session.fecha_fin
+        }
+
+        return res.json(todo);
+    },
+    autenticar:function(req,res){
+      var parametros = req.allParams();
+      req.session.nombre_huesped= parametros.nombre_huesped;
+      req.session.dni= parametros.dni;
+      return res.view('loginSession');
     }
 
     /*script: function(req, res, next) {

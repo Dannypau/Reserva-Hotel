@@ -3,18 +3,18 @@
     <div class="signup-form-container col-sm-6 opaque1">
 
         <form role="form" id="register-form" autocomplete="off" action="
-           
+
            <% if (session.credencialSegura) { %>
        /reserva/finalizar
     <% } else { %>
-           /login
+           /reserva/autenticar           
            <% } %>
-           
+
            " method="post">
             <div class="form-header">
                 <h3 class="form-title"><i class="fa fa-user"></i>Registrar Huésped(es)</h3>
             </div>
-            <% for (var i = 0; i < num_huespedes; i++) { %>
+            <% for (var i = 0; i < req.session.num_huespedes; i++) { %>
                 <div class="form-body row">
                     <div class="form-group col-sm-6">
                         <div class="input-group">
@@ -33,17 +33,6 @@
                     <button type="submit" class="btn btn-success">
                     <span class="glyphicon glyphicon-log-in"></span> Registrar Huésped(es)!
                 </button>
-                <!-- NECESARIOS PARA LA RESERVA -->
-                <input type="hidden" name="fecha_inicio" value="<%= fecha_inicio %>">
-                <input type="hidden" name="fecha_fin" value="<%= fecha_fin %>">
-                <input type="hidden" name="id_hab" value="<%= id_hab %>">
-
-                <!-- PARA REALIZAR CALCULOS -->
-                <input type="hidden" name="costo_total" value="<%= costo_total %>">
-                <input type="hidden" name="num_huespedes" value="<%= num_huespedes %>">
-                <input type="hidden" name="total_dias" value="<%= total_dias %>">
-
-                <!-- FALTA ID DEL CLIENTE -->
 
         </form>
         <br />

@@ -55,6 +55,9 @@ module.exports.routes = {
     '/registrarCliente': {
         view: 'cliente/create'
     },
+    '/exp': {
+        view: 'loginSession'
+    },
 
 
     /***************************************************************************
