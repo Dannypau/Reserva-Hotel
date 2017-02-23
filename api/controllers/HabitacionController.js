@@ -58,12 +58,14 @@ module.exports = {
         Reserva.find({
             fecha_inicio: parametros.fecha_inicio,
             fecha_fin: parametros.fecha_fin
-
         }).populate('habitaciones').exec(function(err, reservas) {
             if (err) {
                 sails.log.info('error al buscar las reservas');
                 return next(err);
             }
+            req.session.fecha_inicio=parametros.fecha_inicio;
+            req.session.fecha_fin=parametros.fecha_fin;
+            req.session.num_huespedes=parametros.num_huespedes;
             if (Object.keys(reservas).length != 0) { //si hay reservas en esa fecha
                 var ocupadas = [];
                 for (var i in reservas) {
@@ -85,9 +87,7 @@ module.exports = {
                     }
                     return res.view('reserva/resultado', {
                         habitaciones: disponibles,
-                        num_huespedes: parametros.num_huespedes,
-                        fecha_inicio: parametros.fecha_inicio,
-                        fecha_fin: parametros.fecha_fin
+                        //no regresar
                     });
                 })
             } else { //si no hay reservas en esas fechas
@@ -95,12 +95,10 @@ module.exports = {
                     if (err) {
                         sails.log.info('error al buscar las toditas');
                         return next(err);
-                    }                    
+                    }
                     return res.view('reserva/resultado', {
                         habitaciones: todas,
-                        num_huespedes: parametros.num_huespedes,
-                        fecha_inicio: parametros.fecha_inicio,
-                        fecha_fin: parametros.fecha_fin
+                        //no regresar
                     });
                 });
             }

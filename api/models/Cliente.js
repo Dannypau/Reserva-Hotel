@@ -26,7 +26,7 @@ module.exports = {
         },
         telefono: {
             type: 'string',
-            required: true
+            required: false
         },
         reservas:{
          collection:'reserva',

@@ -8,111 +8,112 @@
 var Passwords = require('machinepack-passwords');
 module.exports = {
 
-    login: function (req, res) {
-
-
+    login: function(req, res) {
         var parametros = req.allParams();
-
-        if (parametros.correo && parametros.password) {
-
-            Cliente.findOne({
-                correo: parametros.correo
-            }).exec(function (errorInesperado, ClienteEncontrado) {
-
-                if (errorInesperado) {
-                    return res.view('Error', {
-                        error: {
-                            desripcion: "Error inesperado del servidor",
-                            rawError: errorInesperado,
-                            url: "/login"
-                        }
-                    });
-                }
-                if (ClienteEncontrado) {
-
-                    Passwords.checkPassword({
-                        passwordAttempt: parametros.password,
-                        encryptedPassword: ClienteEncontrado.password,
-                    }).exec({
-                        error: function (err) {
-                            return res.view('Error', {
-                                error: {
-                                    desripcion: "Error Inesperado",
-                                    rawError: err,
-                                    url: "/login"
-                                }
-                            });
-                        },
-                        incorrect: function () {
-
-                            return res.view('Error', {
-                                error: {
-                                    desripcion: "Ingrese su password correctamente",
-                                    rawError: "Password Incorrecta",
-                                    url: "login"
-                                }
-                            });
-
-                        },
-                        success: function () {
-                            req.session.credencialSegura = ClienteEncontrado.id;
-                            console.log(parametros.fecha_inicio && parametros.fecha_fin && parametros.id_hab && parametros.nombre_huesped && parametros.costo_total && parametros.total_dias);
-                            if (parametros.fecha_inicio && parametros.fecha_fin && parametros.id_hab && parametros.nombre_huesped && parametros.costo_total && parametros.total_dias) {
-                                return res.view('reserva/finalizar/', {
-                                    fecha_inicio: parametros.fecha_inicio,
-                                    fecha_fin: parametros.fecha_fin,
-                                    id_hab: parametros.id_hab,
-                                    nombre_huesped: parametros.nombre_huesped,
-                                    dni: parametros.dni,
-                                    costo_total: parametros.costo_total,
-                                    total_dias: parametros.total_dias
-                                });
+        Cliente.findOne({
+            correo: parametros.correo
+        }).exec(function(errorInesperado, ClienteEncontrado) {
+            if (errorInesperado) {
+                return res.view('Error', {
+                    error: {
+                        desripcion: "Error inesperado del servidor",
+                        rawError: errorInesperado,
+                        url: "/login"
+                    }
+                });
+            }
+            if (ClienteEncontrado) {
+                Passwords.checkPassword({
+                    passwordAttempt: parametros.password,
+                    encryptedPassword: ClienteEncontrado.password,
+                }).exec({
+                    error: function(err) {
+                        return res.view('Error', {
+                            error: {
+                                desripcion: "Error Inesperado",
+                                rawError: err,
+                                url: "/login"
                             }
-                            else{
-                            return res.view('cliente/show/', {
-                                element: {
-                                    dni: ClienteEncontrado.dni,
-                                    nombre_cliente: ClienteEncontrado.nombre_cliente,
-                                    correo: ClienteEncontrado.correo,
-                                    telefono: ClienteEncontrado.telefono
-                                }
-                            });
+                        });
+                    },
+                    incorrect: function() {
+                        return res.view('Error', {
+                            error: {
+                                desripcion: "Ingrese su password correctamente",
+                                rawError: "Password Incorrecta",
+                                url: "login"
                             }
-                        },
-                    });
+                        });
+                    },
+                    success: function() {
+                        req.session.credencialSegura = ClienteEncontrado.id;
+                        return res.view('cliente/show/', {
+                            element: {
+                                dni: ClienteEncontrado.dni,
+                                nombre_cliente: ClienteEncontrado.nombre_cliente,
+                                correo: ClienteEncontrado.correo,
+                                telefono: ClienteEncontrado.telefono
+                            }
+                        });
+                    },
+                });
+            } else {
+                //quitar esta mierda
+                return res.view('Error', {
+                    error: {
+                        desripcion: "No se encontro al Cliente",
+                        rawError: "No existe Cliente",
+                        url: "/login"
+                    }
+                });
+            }
+        })
 
-
-
-                } else {
-
-                    return res.view('Error', {
-                        error: {
-                            desripcion: "No se encontro al Cliente",
-                            rawError: "No existe Cliente",
-                            url: "/login"
-                        }
-                    });
-                }
-            })
-        } else {
-            return res.view('Error', {
-                error: {
-                    desripcion: "Necesitamos su correo y password",
-                    rawError: "No envia Parametros",
-                    url: "/login"
-                }
-            });
-        }
-
-
-
-
-
+    },
+    seguir: function(req, res, next) {
+        var parametros = req.allParams();
+        
+        Cliente.findOne({
+            correo: parametros.correo
+        }).exec(function(err, ClienteEncontrado) {
+            if (err) {
+                return next(err);
+            }
+            if (ClienteEncontrado) {
+                Passwords.checkPassword({
+                    passwordAttempt: parametros.password,
+                    encryptedPassword: ClienteEncontrado.password,
+                }).exec({
+                    error: function(err) {
+                      if (err) {
+                          return next(err);
+                      }
+                    },
+                    incorrect: function() {
+                      //si se equivoco en la contrasenia
+                        return res.view('loginSession',{
+                         estado:'error' 
+                            
+                        });
+                    },
+                    success: function() {
+                        req.session.credencialSegura = ClienteEncontrado.id;
+                        return res.view('reserva/ResumenReserva');
+                    },
+                });
+            } else {
+                //si no encontro el correo
+                return res.view('loginSession',{
+                         estado: 'error'  
+                            
+                        });
+            }
+        })
 
     },
 
-    close: function (req, res) {
-        req.session.destroy(function (err) {
+    close: function(req, res) {
+        req.session.destroy(function(err) {
 
             if (err) {
                 return res.view('Error', {
@@ -136,49 +137,49 @@ module.exports = {
         });
     },
 
-    perfil: function (req, res) {
+    perfil: function(req, res) {
 
-            Cliente.findOne({
-                id: req.session.credencialSegura
-            }).exec(function (errorInesperado, ClienteEncontrado) {
+        Cliente.findOne({
+            id: req.session.credencialSegura
+        }).exec(function(errorInesperado, ClienteEncontrado) {
 
-                if (errorInesperado) {
-                    return res.view('Error', {
-                        error: {
-                            desripcion: "Error inesperado del servidor",
-                            rawError: errorInesperado,
-                            url: "/login"
-                        }
-                    });
-                }
-                if (ClienteEncontrado) {
+            if (errorInesperado) {
+                return res.view('Error', {
+                    error: {
+                        desripcion: "Error inesperado del servidor",
+                        rawError: errorInesperado,
+                        url: "/login"
+                    }
+                });
+            }
+            if (ClienteEncontrado) {
 
-                    return res.view('cliente/show/', {
-                        element: {
-                            dni: ClienteEncontrado.dni,
-                            nombre_cliente: ClienteEncontrado.nombre_cliente,
-                            correo: ClienteEncontrado.correo,
-                            telefono: ClienteEncontrado.telefono
-                        }
-                    });
+                return res.view('cliente/show/', {
+                    element: {
+                        dni: ClienteEncontrado.dni,
+                        nombre_cliente: ClienteEncontrado.nombre_cliente,
+                        correo: ClienteEncontrado.correo,
+                        telefono: ClienteEncontrado.telefono
+                    }
+                });
 
-                } else {
+            } else {
 
-                    return res.view('Error', {
-                        error: {
-                            desripcion: "No se encontro al Cliente",
-                            rawError: "No existe Cliente",
-                            url: "/login"
-                        }
-                    });
-                }
-            })
-
-
+                return res.view('Error', {
+                    error: {
+                        desripcion: "No se encontro al Cliente",
+                        rawError: "No existe Cliente",
+                        url: "/login"
+                    }
+                });
+            }
+        })
 
 
-        }
-        //    DONE - Validar si envian parametros
+
+
+    }
+    //    DONE - Validar si envian parametros
 
     //    DONE - Buscar por correo al Cliente
 

@@ -1,4 +1,5 @@
-<div class="container opaque1">
+
+   <div class="container opaque1">
     <h2>Resultados:</h2>
     <br/>
     <form action="/reserva/registrarhuespedes">
@@ -6,9 +7,10 @@
             <div class="col-md-offset-10">
                 <button type="submit" class="btn btn-primary btn-lg">Reservar</button>
             </div>
+            <br>
         </div>
+        <br/>
         <div class="row">
-            <h1><input type="hidden" name="num_huespedes" value="<%= num_huespedes %>"></h1>
         </div>
         <% if(Object.keys(habitaciones).length==0){ %>
             <br/>
@@ -18,18 +20,20 @@
                 <div class="table-responsive">
                     <table class="table table-bordered " valign="center">
                         <thead class="opaque1">
-                            <th align="center">
-                                <h3>Piso</h3></th>
+                            <th>
+                                <h3>Número</h3></th>
                             <th>
                                 <h3>Jacuzzi</h3></th>
                             <th>
                                 <h3>Vista al mar</h3></th>
                             <th>
+                                <h3>Piso</h3></th>
+                            <th>
                                 <h3>Tipo</h3></th>
                             <th>
                                 <h3>Habitacion</h3></th>
-                      <th>
-                          <h3>Precio</h3></th>
+                            <th>
+                                <h3>Precio</h3></th>
                             <th>
                                 <h3>Reservar</h3></th>
                         </thead>
@@ -37,75 +41,77 @@
                             <%habitaciones.forEach((habitacion, i) => {%>
                                 <tr align="center" valign="center">
                                     <td>
+                                        <h5><%=habitacion.id%></h5>
+                                    </td>
+
+                                    <td>
+                                        <%if(habitacion.jacuzzi){%>
+                                            <h5>SÍ</h5>
+                                            <%}else{%>
+                                                <h5>NO</h5>
+                                                <%}%>
+                                    </td>
+                                    <td>
+                                        <%if(habitacion.vista_mar){%>
+                                            <h5>SÍ</h5>
+                                            <%}else{%>
+                                                <h5>NO</h5>
+                                                <%}%>
+                                    </td>
+
+                                    <td>
                                         <h5><%=habitacion.numero_piso%></h5>
+                                    </td>
+                                    <td>
+                                        <h5><%=habitacion.tipo%></h5>
+                                    </td>
+                                    <td>
+                                        <% if (habitacion.jacuzzi) { %>
+                                            <% var s="roomjacuzzi"%>
+                                                <% } else if (habitacion.vista_mar) { %>
+                                                    <% if (habitacion.tipo == 'Simple') { %>
+                                                        <% var s="roomindividualmar" %>
+                                                            <% } else { %>
+                                                                <% var s="roomdoblemar" %>
+                                                                    <% } %>
+                                                                        <% } else{ %>
+                                                                            <% if (habitacion.simple == 'Simple') { %>
+                                                                                <% var s="roomindvidual" %>
+                                                                                    <% } else { %>
+                                                                                        <% var s="roomdoble" %>
+                                                                                            <% } %>
 
-                                        <td>
-                                            <%if(habitacion.jacuzzi){%>
-                                                <h5>SÍ</h5>
-                                                <%}else{%>
-                                                    <h5>NO</h5>
-                                                    <%}%>
-                                        </td>
-                                        <td>
-                                            <%if(habitacion.vista_mar){%>
-                                                <h5>SÍ</h5>
-                                                <%}else{%>
-                                                    <h5>NO</h5>
-                                                    <%}%>
-                                        </td>
-                                        <td>
-                                            <h5><%=habitacion.tipo%></h5>
-                                        </td>
-                                        <td>
-                                            <% if (habitacion.jacuzzi) { %>
-                                                <% var s="roomjacuzzi"%>
-                                                    <% } else if (habitacion.vista_mar) { %>
-                                                        <% if (habitacion.tipo == 'Simple') { %>
-                                                            <% var s="roomindividualmar" %>
-                                                                <% } else { %>
-                                                                    <% var s="roomdoblemar" %>
-                                                                        <% } %>
-                                                                            <% } else{ %>
-                                                                                <% if (habitacion.simple == 'Simple') { %>
-                                                                                    <% var s="roomindvidual" %>
-                                                                                        <% } else { %>
-                                                                                            <% var s="roomdoble" %>
                                                                                                 <% } %>
-
-                                                                                                    <% } %>
-                                                                                                        <img data-toggle="modal" data-target="#myModal<%= i %>" src="/imagenes/<%= s %>.jpg" alt="<%= s %>" height="100">
-                                                                                                        <div id="myModal<%= i %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                                                                            <div class="modal-dialog">
-                                                                                                                <div class="modal-content">
-                                                                                                                    <div class="modal-body">
-                                                                                                                        <img src="/imagenes/<%= s %>.jpg" class="img-responsive">
-                                                                                                                    </div>
+                                                                                                    <img data-toggle="modal" data-target="#myModal<%= i %>" src="/imagenes/<%= s %>.jpg" alt="<%= s %>" height="100">
+                                                                                                    <div id="myModal<%= i %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                                                        <div class="modal-dialog">
+                                                                                                            <div class="modal-content">
+                                                                                                                <div class="modal-body">
+                                                                                                                    <img src="/imagenes/<%= s %>.jpg" class="img-responsive">
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                         </div>
+                                                                                                    </div>
 
 
 
 
-                                        </td>
-                                        <td>
-                                            <h5>$ <%=habitacion.precio%></h5>
-                                        </td>
-                                        <td>
-                                            <div class="form-check" align="center">
-                                                <input class="form-check-input" type="checkbox" name="id_hab" id="exampleRadios1" name="id_hab" value="<%=habitacion.id%>">
-                                            </div>
-                                        </td>
+                                    </td>
+                                    <td>
+                                        <h5>$ <%=habitacion.precio%></h5>
+                                    </td>
+                                    <td>
+                                        <div class="form-check" align="center">
+                                            <input class="form-check-input" type="checkbox" name="id_hab" id="exampleRadios1" name="id_hab" value="<%=habitacion.id%>">
+                                        </div>
+                                    </td>
                                 </tr>
                                 <%})%>
 
                         </tbody>
                     </table>
                 </div>
-                <input type="hidden" name="fecha_inicio" value="<%= fecha_inicio %>">
-                <input type="hidden" name="fecha_fin" value="<%= fecha_fin %>">
-                <input type="hidden" name="total_dias" value="<%= Math.floor(( Date.parse(fecha_fin) - Date.parse(fecha_inicio) ) / 86400000) %>">
-
+                <input type="hidden" name="total_dias" value="<%= Math.floor(( Date.parse(req.session.fecha_fin) - Date.parse(req.session.fecha_inicio) ) / 86400000) %>">
 
                 <% } %>
 
@@ -117,9 +123,7 @@
     $('form').submit(function(e) {
         if ($('input[type=checkbox]:checked').length === 0) {
             e.preventDefault();
-            
             swal("Oops...", "Debe seleccionar al menos una habitacion!", "error");
-             
         }
     });
 </script>
