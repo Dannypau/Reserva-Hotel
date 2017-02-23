@@ -5,16 +5,18 @@
         <div class="col-sm-4"></div>
 
         <div class="col-sm-4 opaque1">
-            <form action="/Auth/seguir" method="post">
+            <form action="/Auth/seguir" method="post" name="form">
                 <h1>Login</h1>
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="email" class="form-control" placeholder="Ingrese su Correo" name="correo">
+                    <input id="emailO" type="email" class="form-control" placeholder="Ingrese su Correo" name="correo">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
                     <input type="password" class="form-control" placeholder="Ingrese su Password" name="password">
                 </div>
+                <label id="mensajes">Password</label>
+
                 <button type="submit" class="btn btn-block btn-success">Entrar</button>
                 <br>
             </form>
@@ -28,11 +30,12 @@
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    
-    <% if (typeof estado  != 'undefined') { %>
+
+<% if (typeof estado  != 'undefined') { %>
     <script>
-$( document ).ready(function() {
-    swal("Oops...", "Usuario y/o contraseña incorrectos!", "error");
-});
-</script>
+        $(document).ready(function () {
+            swal("Oops...", "Usuario y/o contraseña incorrectos!", "error");
+        });
+    </script>
     <% } %>
+
