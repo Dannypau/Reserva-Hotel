@@ -1,10 +1,8 @@
-
         <div class="container">
-          <h1 style="color:white" align="center">Es necesario autenticarse para realizar la reserva</h1>
-          <br/>
+            <h1 style="color:white" align="center">Es necesario autenticarse para realizar la reserva</h1>
+            <br/>
             <div class="row ">
                 <div class="col-sm-4"></div>
-
                 <div class="col-sm-4 opaque1">
                     <form action="/Auth/seguir" method="post">
                         <h1>Login</h1>
@@ -25,3 +23,15 @@
 
             </div>
         </div>
+
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+        <% if (typeof estado  != 'undefined') { %>
+            <script>
+                $(document).ready(function() {
+                    swal("Error de autenticación", "Usuario y/o contraseña incorrectos!", "error");
+                });
+            </script>
+            <% } %>
