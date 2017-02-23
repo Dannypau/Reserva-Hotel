@@ -55,34 +55,32 @@ module.exports = {
     },
     crear: function(req, res, next) {
         if (req.param('desayuno')) {
-            desayuno = true;
-            req.session.costo_total = Number(req.session.costo_total) + 10 * req.session.total_dias * req.session.nombre_huesped.length;
+            req.session.desayuno = true;
+            req.session.costo_total = Number(req.session.costo_total) + 10 * Number(req.session.total_dias) * Number(req.session.num_huespedes);
         }
-        //busqueda habitaciones
+        if(req.session.num_huespedes==1){
+          req.session.nombre_huesped=req.session.nombre_huesped.split();
+        }
+
         Habitacion.find(req.session.id_hab).exec(function(err, habitaciones) { //busca las habitaciones
             if (err) {
               sails.log.info('error en la busqueda de habitaciones');
                 return next(err);
             }
             //crear la reserva
-
             Reserva.create({
                 id_cliente: req.session.credencialSegura,
                 habitaciones: habitaciones,
                 fecha_reserva: new Date(),
                 fecha_inicio: req.session.fecha_inicio,
                 fecha_fin: req.session.fecha_fin,
-                desayuno: req.session.desayuno,
+                desayuno: req.session.dasayuno,
                 costo_total: req.session.costo_total,
             }).exec(function(err, reserva) {
                 if (err) {
                   sails.log.info('error en la creacion de reservas');
                     return next(err);
                 }
-                //aloja a los huespedes
-                sails.log(new Date());
-                sails.log(req.session.fecha_inicio);
-                sails.log(req.session.fecha_fin);
                 var huespedes = req.session.nombre_huesped,
                     dnis = req.session.dni;
                 for (var i in huespedes) {
