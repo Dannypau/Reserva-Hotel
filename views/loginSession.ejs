@@ -1,27 +1,38 @@
+<div class="container">
+    <h1 style="color:white" align="center">Es necesario autenticarse para realizar la reserva:</h1>
+    <br/>
+    <div class="row ">
+        <div class="col-sm-4"></div>
 
-        <div class="container">
-          <h1 style="color:white" align="center">Es necesario autenticarse para realizar la reserva:</h1>
-          <br/>
-            <div class="row ">
-                <div class="col-sm-4"></div>
-
-                <div class="col-sm-4 opaque1">
-                    <form action="/Auth/seguir" method="post">
-                        <h1>Login</h1>
-                        <div class="form-group">
-                            <label>Correo</label>
-                            <input type="email" class="form-control" placeholder="Ingrese su Correo" name="correo">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Ingrese su Password" name="password">
-                        </div>
-                        <button type="submit" class="btn btn-block btn-success">Entrar</button>
-                        <br>
-                    </form>
+        <div class="col-sm-4 opaque1">
+            <form action="/Auth/seguir" method="post">
+                <h1>Login</h1>
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="email" class="form-control" placeholder="Ingrese su Correo" name="correo">
                 </div>
-
-                <div class="col-sm-4"></div>
-
-            </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Ingrese su Password" name="password">
+                </div>
+                <button type="submit" class="btn btn-block btn-success">Entrar</button>
+                <br>
+            </form>
         </div>
+
+        <div class="col-sm-4"></div>
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    
+    <% if (typeof estado  != 'undefined') { %>
+    <script>
+$( document ).ready(function() {
+    swal("Oops...", "Usuario y/o contraseña incorrectos!", "error");
+});
+</script>
+    <% } %>

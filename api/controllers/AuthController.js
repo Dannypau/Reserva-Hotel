@@ -72,6 +72,7 @@ module.exports = {
     },
     seguir: function(req, res, next) {
         var parametros = req.allParams();
+        
         Cliente.findOne({
             correo: parametros.correo
         }).exec(function(err, ClienteEncontrado) {
@@ -90,7 +91,10 @@ module.exports = {
                     },
                     incorrect: function() {
                       //si se equivoco en la contrasenia
-                        return res.view('loginSession');
+                        return res.view('loginSession',{
+                         estado:'error' 
+                            
+                        });
                     },
                     success: function() {
                         req.session.credencialSegura = ClienteEncontrado.id;
@@ -98,9 +102,11 @@ module.exports = {
                     },
                 });
             } else {
-                //quitar esta mierda
                 //si no encontro el correo
-                return res.view('loginSession');
+                return res.view('loginSession',{
+                         estado: 'error'  
+                            
+                        });
             }
         })
 

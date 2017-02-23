@@ -8,7 +8,7 @@
                 <div class="signup-form-container col-sm-6 opaque1">
 
                     <!-- form start -->
-                    <form role="form" id="register-form" autocomplete="off" action="/Cliente/crearCliente" method="post">
+                    <form id="identicalForm" role="form"  autocomplete="off" action="/Cliente/crearCliente" method="post" data-toggle="validator">
 
                         <div class="form-header">
                             <h3 class="form-title"><i class="fa fa-user"></i>Registrar Usuario</h3>
@@ -53,7 +53,7 @@
                                 <div class="form-group col-lg-6">
                                     <div class="input-group">
                                         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                        <input name="password" id="password" type="password" class="form-control" placeholder="Password*" required>
+                                        <input id="inputPassword" name="password" type="password" class="form-control" placeholder="Password*" required>
                                     </div>
                                     <span class="help-block" id="error"></span>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="form-group col-lg-6">
                                     <div class="input-group">
                                         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                        <input name="cpassword" type="password" class="form-control" placeholder="Retype Password*" required>
+                                        <input name="cpassword" data-match="#inputPassword" type="password" class="form-control" placeholder="Retype Password*" required>
                                     </div>
                                     <span class="help-block" id="error"></span>
                                 </div>
